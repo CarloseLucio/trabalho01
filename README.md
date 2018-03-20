@@ -1,17 +1,17 @@
-# TRABALHO 01:  Título do Trabalho
+# TRABALHO 01:  Projeto Reconhecimento Facial na Escola 
 Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 
 # Sumário
 
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
-primeiro_componente_do_grupo:email_primeiro_componente@dominio.com<br>
-segundo_componente_do_grupo:email_segundo_componente@dominio.com<br>
+Lúcio Ribeiro Dos Santos : luciorbeio@gmail.com<br>
+Carlos Breno Norato Rosa : cb.californacation@gmail.com <br>
 ...
 
 ### 2.INTRODUÇÃO E MOTIVAÇAO<br>
-Este documento contém a especificação do projeto do banco de dados <nome do projeto> 
-<br>e motivação da escolha realizada. <br>
+Este documento contém a especificação do projeto do banco de dados <Projeto Reconhecimento Facial na Escola> 
+<br> O projeto realizado tem como intuito facilitar o trabalho dos servidores que trabalham na área da educação, auxliando na verificação da presença dos alunos através do reconhecimento facial<br>
 
 > A empresa "Devcom Projetos" visa colaborar com desenvolvimento de projetos para uma sociedade melhor. Sabendo-se dos desafios para gerenciar projetos dentro de uma empresa e visando unir as informações relativas a funcionários, departamentos e projetos em um mesmo local, ficamos motivados com o desenvolvimento deste sistema. O Sistema "Devcom" tem como objetivo gerenciar todas as informações ao desenvolvimento das atividades de projetos em diversas localidades do país. Para realizar suas operações adequadamente e empresa necessita que sistema que armazene informações relativas aos Projetos, Departamentos e Empregados, além de também armazenar dados sobre  Dependentes e Históricos de Salário dos empregados. O sistema deverá gerar um conjunto de relatórios que por sua vez atenderá os anseios da empresa em questão.
  
