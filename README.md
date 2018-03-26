@@ -10,7 +10,7 @@ Carlos Breno Norato Rosa : cb.californacation@gmail.com <br>
 ...
 
 ### 2.INTRODUÇÃO E MOTIVAÇAO<br>
-Este documento contém a especificação do projeto do Projeto Reconhecimento Facial na Escola 
+Este documento contém a especificação do projeto do Projeto Reconhecimento Facial na Escola. 
 <br> O projeto realizado tem como intuito facilitar o trabalho dos servidores que trabalham na área da educação, auxliando na verificação da presença dos alunos através do reconhecimento facial<br>
 
 >Como nós da Relevabor Company apreciamos muito a educação e reconhecemos a sua importância, foi gerado cada vez mais em nós o desejo de desenvolver um projeto para auxiliar o trabalho dos educadores, especialmente em coisas simples mas que demanda um certo tempo da aula. Nosso intuito é utilizar da tecnologia de reconhecimento facial para tornar mais simples tarefas como, chamada, verificação de quais alunos chegaram atrasado,entre outros. Sabemos que a educação é o futuro, e acreditamos que com a tecnologia ela só tende a melhorar.     
