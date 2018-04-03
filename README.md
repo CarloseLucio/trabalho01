@@ -21,7 +21,7 @@ Descrição textual das regras de negócio definidas como um  subconjunto do mun
 cujos elementos são propriedades que desejamos incluir, processar, armazenar, 
 gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
-> O Siatema proposto para a "Relevabor Company" conterá as informações aqui detalhados. Serão armazenados informações do rosto de cada servidor e aluno junto com nome e a data de entrada, idade, telefone, horário de trabalho ou de aula. Caso seja um servidor tera o Rg e o salário do servidor. Se for um aluno terá a turma que ele pertence, quais professores ele tem aula.Vamos armazenar a presença dos alunos, que horas eles entraram na sala, suas notas, a hora em que eles vão ter aula com cada professor
+> O Sistema proposto para a "Relevabor Company" conterá as informações aqui detalhados. Serão armazenados informações do rosto de cada servidor e aluno junto com nome e a data de entrada, idade, telefone, horário de trabalho ou de aula. Caso seja um servidor tera o Rg e o salário do servidor. Se for um aluno terá a turma que ele pertence, quais professores ele tem aula.Vamos armazenar a presença dos alunos, que horas eles entraram na sala, suas notas, a hora em que eles vão ter aula com cada professor
 
 
 ### 4.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
