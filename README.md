@@ -34,13 +34,10 @@ https://balsamiq.cloud/s9dlufx/pwt6u3<br>
 
 
 #### 4.1 TABELA DE DADOS DO SISTEMA:
-    a) Esta tabela deve conter todos os atributos do sistema e um mínimo de 10 linhas/registros de dados.
-    b) Esta tabela tem a intenção de simular um relatório com todos os dados que serão armazenados 
-    e deve ser criada antes do modelo conceitual
-    c) Após criada esta tabela não deve ser modificada, pois será comparada com os resultados finais na conclusão do trabalho
+    
+    (https://cdn.discordapp.com/attachments/383721330106957838/450829572360110081/gnt.png)
     
     
-#### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
     O sistema proposto poderá fornecer esses tipos de relatórios e informações : 
     
     1) Os dados de todos os alunos
