@@ -27,7 +27,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 ### 4.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
 
 
-https://balsamiq.cloud/s9dlufx/pwt6u3<br>
+file:///C:/Users/20171tiimi0149/Downloads/New%20Project%20(1).pdf<br>
 
 ![Alt text](https://github.com/discipbd1/trab01/blob/master/balsamiq.png?raw=true "Title")
 ![Arquivo PDF do Protótipo Balsamiq feito para Empresa Devcom](https://github.com/discipint/trabalho01/blob/master/arquivos/EmpresaDevcom.pdf?raw=true "Empresa Devcom")
