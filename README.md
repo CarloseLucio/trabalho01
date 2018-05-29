@@ -35,7 +35,7 @@ https://balsamiq.cloud/s9dlufx/pwt6u3<br>
 
 #### 4.1 TABELA DE DADOS DO SISTEMA:
     
-    (https://cdn.discordapp.com/attachments/383721330106957838/450829572360110081/gnt.png)
+    https://cdn.discordapp.com/attachments/383721330106957838/450829572360110081/gnt.png
     
     
     O sistema proposto poderá fornecer esses tipos de relatórios e informações : 
