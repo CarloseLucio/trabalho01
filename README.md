@@ -41,9 +41,14 @@ https://balsamiq.cloud/s9dlufx/pwt6u3<br>
     
     
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
-    a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
-    b) Crie uma lista com os 10 principais relatórios que poderão ser obtidos por meio do sistema proposto!
-    
+     O sistema proposto poderá fornecerá esses tipos de relatórios e informações : 
+    
+    1) Os dados de todos os alunos
+    2) O registro de entrada e saída dos alunos
+    3) Notas em geral de cada aluno
+    4) A qual turma o aluno pertence e quaid matérias ele tem
+    5) Calendário de atividades, horário das aulas e de eventos da escola
+
 >## Marco de Entrega 01 em: (24/03/2018)<br>
 
 ### 5.MODELO CONCEITUAL<br>
