@@ -41,7 +41,7 @@ https://balsamiq.cloud/s9dlufx/pwt6u3<br>
     
     
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
-     O sistema proposto poderá fornecerá esses tipos de relatórios e informações : 
+    O sistema proposto poderá fornecerá esses tipos de relatórios e informações : 
     
     1) Os dados de todos os alunos
     2) O registro de entrada e saída dos alunos
