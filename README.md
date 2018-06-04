@@ -26,7 +26,6 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 ### 4.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
 
-<b
 
 ![Alt text](https://github.com/discipbd1/trab01/blob/master/balsamiq.png?raw=true "Title")
 ![Arquivo PDF do Protótipo Balsamiq feito para Empresa Relevabor Company](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/arquivos/ah.pdf?raw=true "Relevabor Company")
