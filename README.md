@@ -29,7 +29,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 <b
 
 ![Alt text](https://github.com/discipbd1/trab01/blob/master/balsamiq.png?raw=true "Title")
-![Arquivo PDF do Protótipo Balsamiq feito para Empresa Devcom](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/arquivos/ah.pdf raw=true "Relevabor Company")
+![Arquivo PDF do Protótipo Balsamiq feito para Emoresa Relevabor Company](https://github.com/ReconhecimentoFacial/trabalho01/arquivos/ah.pdf? raw=true "Relevabor Company")
 
 
 #### 4.1 TABELA DE DADOS DO SISTEMA:
