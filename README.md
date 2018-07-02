@@ -200,12 +200,48 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
+
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
+            Select * from Aluno
+            Select * from Avaliacoes
+            Select * from Professor
+            Select * from Turma
+
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
+            Select * from Aluno
+            Where dat_nasc > "12-12-2000"
+
+            Select * from Avaliacoes
+            Where Valor_avaliacao >= 10
+
+            Select * from Professor
+            Where matricula = "1111111111"
+
+            Select * from Turma
+            Where dat_criacao >= "01-01-2017"
+            
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
-    a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
+    a)      Select * from Aluno
+            Where dat_nasc < "12-12-2000" and dat_nasc > "12-12-2003"
+
+            Select * from Avaliacoes
+            Where Valor_avaliacao = 10 or Valor_avaliacao = 5
+
+            Select * from Professor
+            Where Nome_Prof = "Pedro" or Nome_prof = "Thais"
+
+            Select * from Turma
+            Where Nome_turma not "A"
+
+            Select * from Avaliacoes
+            Where Valor_avaliacao = 10 and 
+            Dat_avaliacao > "12-03-2017"
+            
+            
     b) Criar no mínimo 3 consultas com operadores aritméticos 
     c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
+    
+    
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
     b) Criar uma consulta para cada tipo de função data apresentada.
