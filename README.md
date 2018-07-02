@@ -104,10 +104,10 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
            Cpf_prof Varchar(7));
 
         Create Table Avaliacoes(
-           Num_avalicao Varchar(10) Primary Key,
+           Num_avalicao Serial Primary Key,
            Nome_avalicao Varchar(45),
-           Dat_Avalicao date
-           Nota_avalicao float);       
+           Dat_Avalicao date,
+           Valor_avalicao float);      
         
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
