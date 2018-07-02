@@ -74,9 +74,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 >## Marco de Entrega 01 em: (12/05/2018)<br>
 ### 6	MODELO LÓGICO<br>
-        a) inclusão do modelo lógico do banco de dados
-        b) verificação de correspondencia com o modelo conceitual 
-        (não serão aceitos modelos que não estejam em conformidade)
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tey.png?raw=true "Modelo Logico")
 
 ### 7	MODELO FÍSICO<br>
        Create Table Aluno(
