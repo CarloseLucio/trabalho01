@@ -93,17 +93,17 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
           Nome_aluno Varchar(85), 
           dat_nasc Date);
 
-Create Table Turma(
+        Create Table Turma(
           Num_Turma Serial Primary Key,
           Nome_turma Varchar(85),
           Data_Criacao Date);
 
-Create Table Professor(
+        Create Table Professor(
           Matricula Varchar(10) Primary Key,
            Nome_prof Varchar(85),
            Cpf_prof Varchar(7));
 
-Create Table Avaliacoes(
+        Create Table Avaliacoes(
            Num_avalicao Varchar(10) Primary Key,
            Nome_avalicao Varchar(45),
            Dat_Avalicao date
