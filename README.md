@@ -111,17 +111,96 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
         
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
-        a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físic
+        
+        a) Insert Into Aluno (Matricula, Nome, dat_nasc)
+           Values ("111111111", "Guilherme Bork","12-12-2002")
+             ("2222222222", "Fabio", "09-09-2002")
+             ("3333333333", "Daniel", "07-08-2001")
+             ("4444444444", "Vanessa", "08-09-2003")
+             ("5555555555", "Kamila", "02-09-2000");
+             
+            Insert Into Turma( Nome_turma, dat_criacao)
+            Values ("A", "01-01-2017"),
+            ("B", "01-01-2017"),
+            ("C", "01-06-2017"),
+            ("D", "01-01-2018"),
+            ("X", "01-06-2018");
+            
+            Insert Into Professor(Matricula, Nome_prof, cpf_prof)
+            Values ("0111111111", "Cesar", "1111111"),
+            ("0222222222", "Morgana", "2222222")
+            ("0333333333", "Pedro", "3333333")
+            ("0444444444", "Thais", "4444444")
+            ("0555555555", "Rick", "5555555");
+            
+            Insert Into Avaliacoes(Nome_avaliacao, Dat_avaliacao, Valor_avaliacao)
+            Values ("prova1", "12-12-2018", 10)
+            ("Trab1", "12-12-2018", 25)
+            ("Prova2", "12-12-2018", 10)
+            ("Trab2", "12-12-2018", 5)
+            ("Trab3", "12-12-2018", 10);
+             
+             
+             
         b) formato .SQL
 
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
-        a) Junção dos scripts anteriores em um único script 
-        (create para tabelas e estruturas de dados + dados a serem inseridos)
+          Create Table Aluno(
+          Matrícula Varchar(10) Primary Key, 
+          Nome_aluno Varchar(85), 
+          dat_nasc Date);
+
+        Create Table Turma(
+          Num_Turma Serial Primary Key,
+          Nome_turma Varchar(85),
+          Data_Criacao Date);
+
+        Create Table Professor(
+          Matricula Varchar(10) Primary Key,
+           Nome_prof Varchar(85),
+           Cpf_prof Varchar(7));
+
+        Create Table Avaliacoes(
+           Num_avalicao Serial Primary Key,
+           Nome_avalicao Varchar(45),
+           Dat_Avalicao date,
+           Valor_avalicao float);    
+        
+          Insert Into Aluno (Matricula, Nome, dat_nasc)
+          Values ("111111111", "Guilherme Bork","12-12-2002")
+             ("2222222222", "Fabio", "09-09-2002")
+             ("3333333333", "Daniel", "07-08-2001")
+             ("4444444444", "Vanessa", "08-09-2003")
+             ("5555555555", "Kamila", "02-09-2000");
+             
+            Insert Into Turma( Nome_turma, dat_criacao)
+            Values ("A", "01-01-2017"),
+            ("B", "01-01-2017"),
+            ("C", "01-06-2017"),
+            ("D", "01-01-2018"),
+            ("X", "01-06-2018");
+            
+            Insert Into Professor(Matricula, Nome_prof, cpf_prof)
+            Values ("0111111111", "Cesar", "1111111"),
+            ("0222222222", "Morgana", "2222222")
+            ("0333333333", "Pedro", "3333333")
+            ("0444444444", "Thais", "4444444")
+            ("0555555555", "Rick", "5555555");
+            
+            Insert Into Avaliacoes(Nome_avaliacao, Dat_avaliacao, Valor_avaliacao)
+            Values ("prova1", "12-12-2018", 10)
+            ("Trab1", "12-12-2018", 25)
+            ("Prova2", "12-12-2018", 10)
+            ("Trab2", "12-12-2018", 5)
+            ("Trab3", "12-12-2018", 10);
+        
         b) Criar um novo banco de dados para testar a restauracao 
         (em caso de falha na restauração o grupo não pontuará neste quesito)
         c) formato .SQL
+
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
-        a) Junção dos scripts anteriores em um único script 
+       
+       a) Junção dos scripts anteriores em um único script 
         (Drop table + Create de tabelas e estruturas de dados + dados a serem inseridos)
         b) Criar um novo banco de dados para testar a restauracao 
         (em caso de falha na restauração o grupo não pontuará neste quesito)
