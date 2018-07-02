@@ -47,18 +47,8 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 >## Marco de Entrega 01 em: (24/03/2018)<br>
 
 ### 5.MODELO CONCEITUAL<br>
-    A) NOTACAO ENTIDADE RELACIONAMENTO 
-        * Para nosso prótótipo limitaremos o modelo conceitual nas 5 principais entidades do escopo
-        * O protótipo deve possui no mínimo duas relações N para N
-        * o mínimo de entidades do modelo conceitual será igual a 5
         
 ![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/conceito.png?raw=true "Modelo Conceitual")
-    
-    B) NOTACAO UML (Caso esteja fazendo a disciplina de analise)
-    C) QUALIDADE 
-        Garantir que a semântica dos atributos seja clara no esquema
-        Criar o esquema de forma a garantir a redução de informação redundante, possibilidade de valores null, 
-        e tuplas falsas
     
         
     
@@ -66,6 +56,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
     [Grupo01]: [Nomes dos que participaram na avaliação]
     [Grupo02]: [Nomes dos que participaram na avaliação]
 ## Marco de Entrega 01 em: (20/04/2018)<br>
+
 #### 5.2 DECISÕES DE PROJETO
     [atributo]: [descrição da decisão]
     
