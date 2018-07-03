@@ -58,12 +58,35 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 ## Marco de Entrega 01 em: (20/04/2018)<br>
 
 #### 5.2 DECISÕES DE PROJETO
-    [atributo]: [descrição da decisão]
     
-    EXEMPLO:
-    a) Campo endereço: em nosso projeto optamos por um campo multivalorado e composto, pois a empresa 
-    pode possuir para cada departamento mais de uma localização... 
-    b) justifique!
+          Matricula : Colocamos o campo matricula pelo fato de cada participante (professores e alunos) possuir uma matricula 
+                      diferente de qualquer outra pessoa do sistema,sendo assim,é muito bom para usar de chave primária. 
+                      
+          Nome_aluno : Esse atributo é utilizado para a identificação do aluno para amostra de notas ou da pagina que mostra
+                        todos os dados dos alunos,pois para o usuário é mais válido lembrar o nome do que lembra a matricúla. 
+          
+          dat_nasc : Outro dado utilizado para a identificação do aluno. 
+          
+          Num_Turma : o número da turma é de grande utilidade,pois é quue certamente será diferente de turma para turma,
+                        sendo assim, muito utíl para ser a chave primária da objeto turma.
+                        
+          Nome_turma : O nome da turma é a principal forma para o usuário poder a identificar, é util para o usuário ver o que                              cada turma possui de atividade,ou marcar uma,entre outras coisas.   
+          
+          Data_Criacao : É o ano ínicial da turma e é um outro atributo utilizado para especificar a turma. 
+          
+          Nome_prof : atributo para identificação do professor,é recebido no proprio cadastro. 
+          
+          Cpf_prof : outro dado para especificação do professor
+          
+          Num_avalicao :  Identificador e chave primaria da avaliação.
+          
+          Nome_avalicao : Especificação se é uma prova ou uma atividade. 
+          
+          Dat_Avalicao : Data que acontecerá a atividade. 
+          
+          Valor_avalicao : valor da avaliação. 
+          
+          nota : nota que o aluno recebeu na avaliação. 
 
 #### 5.3 DESCRIÇÃO DOS DADOS 
     [objeto]: [descrição do objeto]
@@ -93,7 +116,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
         Create Table Professor(
           Matricula Varchar(10) Primary Key,
            Nome_prof Varchar(85),
-           Cpf_prof Varchar(7));
+           Cpf_prof Varchar(11));
 
         Create Table Avaliacoes(
            Num_avalicao Serial Primary Key,
@@ -119,11 +142,11 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
             ("X", "01-06-2018");
             
             Insert Into Professor(Matricula, Nome_prof, cpf_prof)
-            Values ("0111111111", "Cesar", "1111111"),
-            ("0222222222", "Morgana", "2222222")
-            ("0333333333", "Pedro", "3333333")
-            ("0444444444", "Thais", "4444444")
-            ("0555555555", "Rick", "5555555");
+            Values ("0111111111", "Cesar", "11111111111"),
+            ("0222222222", "Morgana", "22222222222")
+            ("0333333333", "Pedro", "333333333333")
+            ("0444444444", "Thais", "44444444444")
+            ("0555555555", "Rick", "55555555555");
             
             Insert Into Avaliacoes(Nome_avaliacao, Dat_avaliacao, Valor_avaliacao)
             Values ("prova1", "12-12-2018", 10)
