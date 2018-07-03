@@ -53,8 +53,8 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
         
     
 #### 5.1 Validação do Modelo Conceitual
-    [Grupo01]: [Nomes dos que participaram na avaliação]
-    [Grupo02]: [Nomes dos que participaram na avaliação]
+    [Grupo01]: [Lúcio Ribeiro dos Santos e Carlos Breno Norato Rosa]
+    
 ## Marco de Entrega 01 em: (20/04/2018)<br>
 
 #### 5.2 DECISÕES DE PROJETO
