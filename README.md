@@ -224,7 +224,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
             Select * from Aluno
             
-            ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/aluno.png?raw=true)
+            ![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/turma.png)
             
             Select * from Avaliacoes
             
