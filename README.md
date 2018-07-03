@@ -127,33 +127,33 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         
-        a) Insert Into Aluno (Matricula, Nome, dat_nasc)
-           Values ("111111111", "Guilherme Bork","12-12-2002")
-             ("2222222222", "Fabio", "09-09-2002")
-             ("3333333333", "Daniel", "07-08-2001")
-             ("4444444444", "Vanessa", "08-09-2003")
-             ("5555555555", "Kamila", "02-09-2000");
+        a)  Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
+			Values ('11111111', 'Guilherme Bork','12-12-2002'),
+            ('2222222222', 'Fabio', '09-09-2002'),
+            ('3333333333', 'Daniel', '07-08-2001'),
+            ('4444444444', 'Vanessa', '08-09-2003'),
+            ('5555555555', 'Kamila', '02-09-2000');
              
-            Insert Into Turma( Nome_turma, dat_criacao)
-            Values ("A", "01-01-2017"),
-            ("B", "01-01-2017"),
-            ("C", "01-06-2017"),
-            ("D", "01-01-2018"),
-            ("X", "01-06-2018");
+            Insert Into Turma( Nome_turma, Data_criacao)
+            Values ('A', '01-01-2017'),
+            ('B', '01-01-2017'),
+            ('C', '01-06-2017'),
+            ('D', '01-01-2018'),
+            ('X', '01-06-2018');
             
-            Insert Into Professor(Matricula, Nome_prof, cpf_prof)
-            Values ("0111111111", "Cesar", "11111111111"),
-            ("0222222222", "Morgana", "22222222222")
-            ("0333333333", "Pedro", "333333333333")
-            ("0444444444", "Thais", "44444444444")
-            ("0555555555", "Rick", "55555555555");
+         Insert Into Professor(Matricula, Nome_prof, cpf_prof)
+            Values ('0111111111', 'Cesar', '111111111'),
+            ('0222222222', 'Morgana', '222222222'),
+            ('0333333333','Pedro', '3333333333'),
+            ('0444444444', 'Thais', '444444444'),
+            ('0555555555', 'Rick', '555555555');
             
-            Insert Into Avaliacoes(Nome_avaliacao, Dat_avaliacao, Valor_avaliacao)
-            Values ("prova1", "12-12-2018", 10)
-            ("Trab1", "12-12-2018", 25)
-            ("Prova2", "12-12-2018", 10)
-            ("Trab2", "12-12-2018", 5)
-            ("Trab3", "12-12-2018", 10);
+            Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
+            Values ('prova1', '12-12-2018', 10),
+            ('Trab1', '12-12-2018', 25),
+            ('Prova2', '12-12-2018', 10),
+            ('Trab2', '12-12-2018', 5),
+            ('Trab3', '12-12-2018', 10);
              
              
              
@@ -181,38 +181,34 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
            Dat_Avalicao date,
            Valor_avalicao float);    
         
-          Insert Into Aluno (Matricula, Nome, dat_nasc)
-          Values ("111111111", "Guilherme Bork","12-12-2002")
-             ("2222222222", "Fabio", "09-09-2002")
-             ("3333333333", "Daniel", "07-08-2001")
-             ("4444444444", "Vanessa", "08-09-2003")
-             ("5555555555", "Kamila", "02-09-2000");
+          Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
+			Values ('11111111', 'Guilherme Bork','12-12-2002'),
+            ('2222222222', 'Fabio', '09-09-2002'),
+            ('3333333333', 'Daniel', '07-08-2001'),
+            ('4444444444', 'Vanessa', '08-09-2003'),
+            ('5555555555', 'Kamila', '02-09-2000');
              
-            Insert Into Turma( Nome_turma, dat_criacao)
-            Values ("A", "01-01-2017"),
-            ("B", "01-01-2017"),
-            ("C", "01-06-2017"),
-            ("D", "01-01-2018"),
-            ("X", "01-06-2018");
+            Insert Into Turma( Nome_turma, Data_criacao)
+            Values ('A', '01-01-2017'),
+            ('B', '01-01-2017'),
+            ('C', '01-06-2017'),
+            ('D', '01-01-2018'),
+            ('X', '01-06-2018');
             
-            Insert Into Professor(Matricula, Nome_prof, cpf_prof)
-            Values ("0111111111", "Cesar", "1111111"),
-            ("0222222222", "Morgana", "2222222")
-            ("0333333333", "Pedro", "3333333")
-            ("0444444444", "Thais", "4444444")
-            ("0555555555", "Rick", "5555555");
+         Insert Into Professor(Matricula, Nome_prof, cpf_prof)
+            Values ('0111111111', 'Cesar', '111111111'),
+            ('0222222222', 'Morgana', '222222222'),
+            ('0333333333','Pedro', '3333333333'),
+            ('0444444444', 'Thais', '444444444'),
+            ('0555555555', 'Rick', '555555555');
             
-            Insert Into Avaliacoes(Nome_avaliacao, Dat_avaliacao, Valor_avaliacao)
-            Values ("prova1", "12-12-2018", 10)
-            ("Trab1", "12-12-2018", 25)
-            ("Prova2", "12-12-2018", 10)
-            ("Trab2", "12-12-2018", 5)
-            ("Trab3", "12-12-2018", 10);
-        
-        b) Criar um novo banco de dados para testar a restauracao 
-        (em caso de falha na restauração o grupo não pontuará neste quesito)
-        c) formato .SQL
-
+            Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
+            Values ('prova1', '12-12-2018', 10),
+            ('Trab1', '12-12-2018', 25),
+            ('Prova2', '12-12-2018', 10),
+            ('Trab2', '12-12-2018', 5),
+            ('Trab3', '12-12-2018', 10);
+      
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
        
        a) Junção dos scripts anteriores em um único script 
@@ -223,20 +219,33 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
-    OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
+   
 
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
             Select * from Aluno
+            
+            ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/aluno.png?raw=true)
+            
             Select * from Avaliacoes
+            
+            ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/avalia%C3%A7%C3%B5es.png?raw=true)
+            
             Select * from Professor
+            
+             ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/professor.png?raw=true)
+            
             Select * from Turma
+            
+            ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/turma.png?raw=true)
+           
+   
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
             Select * from Aluno
             Where dat_nasc > "12-12-2000"
 
-            Select * from Avaliacoes
-            Where Valor_avaliacao >= 10
+           Select * from Aluno
+            Where dat_nasc > "12-12-2000"
 
             Select * from Professor
             Where matricula = "1111111111"
@@ -245,11 +254,11 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
             Where dat_criacao >= "01-01-2017"
             
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
-    a)      Select * from Aluno
+            Select * from Aluno
             Where dat_nasc < "12-12-2000" and dat_nasc > "12-12-2003"
 
             Select * from Avaliacoes
-            Where Valor_avaliacao = 10 or Valor_avaliacao = 5
+            Where Valor_avalicao = 10 or Valor_avaliacao = 5
 
             Select * from Professor
             Where Nome_Prof = "Pedro" or Nome_prof = "Thais"
@@ -258,12 +267,16 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
             Where Nome_turma not "A"
 
             Select * from Avaliacoes
-            Where Valor_avaliacao = 10 and 
-            Dat_avaliacao > "12-03-2017"
+            Where Valor_avalicao = 10 and 
+            Dat_avalicao > "12-03-2017"
             
-            
-    b) Criar no mínimo 3 consultas com operadores aritméticos 
-    c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
+            Select * from Avaliacoes
+            Where Valor_avalicao > 10
+       
+            Select Nome_aluno as batutinhas from Aluno
+            Select Matrícula as Código_de_Barra from Aluno 
+            Select Dat_Avalicao as Data_Avaliacao from Avalicoes
+       
     
     
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
