@@ -59,41 +59,48 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 #### 5.2 DECISÕES DE PROJETO
     
-          Matricula : Colocamos o campo matricula pelo fato de cada participante (professores e alunos) possuir uma matricula 
-                      diferente de qualquer outra pessoa do sistema,sendo assim,é muito bom para usar de chave primária. 
-                      
-          Nome_aluno : Esse atributo é utilizado para a identificação do aluno para amostra de notas ou da pagina que mostra
-                        todos os dados dos alunos,pois para o usuário é mais válido lembrar o nome do que lembra a matricúla. 
-          
-          dat_nasc : Outro dado utilizado para a identificação do aluno. 
-          
-          Num_Turma : o número da turma é de grande utilidade,pois é quue certamente será diferente de turma para turma,
-                        sendo assim, muito utíl para ser a chave primária da objeto turma.
-                        
-          Nome_turma : O nome da turma é a principal forma para o usuário poder a identificar, é util para o usuário ver o que                              cada turma possui de atividade,ou marcar uma,entre outras coisas.   
-          
-          Data_Criacao : É o ano ínicial da turma e é um outro atributo utilizado para especificar a turma. 
-          
-          Nome_prof : atributo para identificação do professor,é recebido no proprio cadastro. 
-          
-          Cpf_prof : outro dado para especificação do professor
-          
-          Num_avalicao :  Identificador e chave primaria da avaliação.
-          
-          Nome_avalicao : Especificação se é uma prova ou uma atividade. 
-          
-          Dat_Avalicao : Data que acontecerá a atividade. 
-          
-          Valor_avalicao : valor da avaliação. 
-          
-          nota : nota que o aluno recebeu na avaliação. 
+         
 
 #### 5.3 DESCRIÇÃO DOS DADOS 
-    [objeto]: [descrição do objeto]
+    Aluno : Tabela que recebe os atributos dos alunos
+   
+    	Matricula : Colocamos o campo matricula pelo fato de cada participante (professores e alunos) possuir uma matricula 
+                      diferente de qualquer outra pessoa do sistema,sendo assim,é muito bom para usar de chave primária. 
+                      
+    	Nome_aluno : Esse atributo é utilizado para a identificação do aluno para amostra de notas ou da pagina que mostra
+                        todos os dados dos alunos,pois para o usuário é mais válido lembrar o nome do que lembra a matricúla. 
+          
+    	dat_nasc : Outro dado utilizado para a identificação do aluno. 
     
-    EXEMPLO:
-    CLIENTE: Tabela que armazena as informações relativas ao cliente<br>
-    CPF: campo que armazena o número de Cadastro de Pessoa Física para cada cliente da empresa.<br>
+    Turma : tabela que receberá os atributos da turma
+    
+    	Num_Turma : o número da turma é de grande utilidade,pois é quue certamente será diferente de turma para turma,
+                        sendo assim, muito utíl para ser a chave primária da objeto turma.
+                        
+    	Nome_turma : O nome da turma é a principal forma para o usuário poder a identificar, é util para o usuário ver o que                              cada turma possui de atividade,ou marcar uma,entre outras coisas.   
+          
+    	Data_Criacao : É o ano ínicial da turma e é um outro atributo utilizado para especificar a turma. 
+        
+    Professor : Tabela que recebe os atributos dos professores 
+   	
+	Matricula : Colocamos o campo matricula pelo fato de cada participante (professores e alunos) possuir uma matricula 
+                      diferente de qualquer outra pessoa do sistema,sendo assim,é muito bom para usar de chave primária. 
+		      
+    	Nome_prof : atributo para identificação do professor,é recebido no proprio cadastro. 
+          
+    	Cpf_prof : outro dado para especificação do professor
+          
+     Avaliacao : Tabela que recebe os atributos daas avaliações 
+     
+    	Num_avalicao :  Identificador e chave primaria da avaliação.
+          
+    	Nome_avalicao : Especificação se é uma prova ou uma atividade. 
+          
+    	Dat_Avalicao : Data que acontecerá a atividade. 
+          
+    	Valor_avalicao : valor da avaliação. 
+          
+    	nota : nota que o aluno recebeu na avaliação. 
 
 >## Marco de Entrega 01 em: (12/05/2018)<br>
 ### 6	MODELO LÓGICO<br>
@@ -127,60 +134,6 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
         
-        a)  Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
-			Values ('11111111', 'Guilherme Bork','12-12-2002'),
-            ('2222222222', 'Fabio', '09-09-2002'),
-            ('3333333333', 'Daniel', '07-08-2001'),
-            ('4444444444', 'Vanessa', '08-09-2003'),
-            ('5555555555', 'Kamila', '02-09-2000');
-             
-            Insert Into Turma( Nome_turma, Data_criacao)
-            Values ('A', '01-01-2017'),
-            ('B', '01-01-2017'),
-            ('C', '01-06-2017'),
-            ('D', '01-01-2018'),
-            ('X', '01-06-2018');
-            
-         Insert Into Professor(Matricula, Nome_prof, cpf_prof)
-            Values ('0111111111', 'Cesar', '111111111'),
-            ('0222222222', 'Morgana', '222222222'),
-            ('0333333333','Pedro', '3333333333'),
-            ('0444444444', 'Thais', '444444444'),
-            ('0555555555', 'Rick', '555555555');
-            
-            Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
-            Values ('prova1', '12-12-2018', 10),
-            ('Trab1', '12-12-2018', 25),
-            ('Prova2', '12-12-2018', 10),
-            ('Trab2', '12-12-2018', 5),
-            ('Trab3', '12-12-2018', 10);
-             
-             
-             
-        b) formato .SQL
-
-#### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
-          Create Table Aluno(
-          Matrícula Varchar(10) Primary Key, 
-          Nome_aluno Varchar(85), 
-          dat_nasc Date);
-
-        Create Table Turma(
-          Num_Turma Serial Primary Key,
-          Nome_turma Varchar(85),
-          Data_Criacao Date);
-
-        Create Table Professor(
-          Matricula Varchar(10) Primary Key,
-           Nome_prof Varchar(85),
-           Cpf_prof Varchar(7));
-
-        Create Table Avaliacoes(
-           Num_avalicao Serial Primary Key,
-           Nome_avalicao Varchar(45),
-           Dat_Avalicao date,
-           Valor_avalicao float);    
-        
           Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
 			Values ('11111111', 'Guilherme Bork','12-12-2002'),
             ('2222222222', 'Fabio', '09-09-2002'),
@@ -208,14 +161,63 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
             ('Prova2', '12-12-2018', 10),
             ('Trab2', '12-12-2018', 5),
             ('Trab3', '12-12-2018', 10);
-      
+             
+#### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
+          Create Table Aluno(
+          Matrícula Varchar(10) Primary Key, 
+          Nome_aluno Varchar(85), 
+          dat_nasc Date);
+
+        Create Table Turma(
+          Num_Turma Serial Primary Key,
+          Nome_turma Varchar(85),
+          Data_Criacao Date);
+
+        Create Table Professor(
+          Matricula Varchar(10) Primary Key,
+           Nome_prof Varchar(85),
+           Cpf_prof Varchar(7));
+
+        Create Table Avaliacoes(
+           Num_avalicao Serial Primary Key,
+           Nome_avalicao Varchar(45),
+           Dat_Avalicao date,
+           Valor_avalicao float);    
+          
+	  Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
+	  Values ('11111111', 'Guilherme Bork','12-12-2002'),
+            ('2222222222', 'Fabio', '09-09-2002'),
+            ('3333333333', 'Daniel', '07-08-2001'),
+            ('4444444444', 'Vanessa', '08-09-2003'),
+            ('5555555555', 'Kamila', '02-09-2000');
+             
+            Insert Into Turma( Nome_turma, Data_criacao)
+            Values ('A', '01-01-2017'),
+            ('B', '01-01-2017'),
+            ('C', '01-06-2017'),
+            ('D', '01-01-2018'),
+            ('X', '01-06-2018');
+            
+         Insert Into Professor(Matricula, Nome_prof, cpf_prof)
+            Values ('0111111111', 'Cesar', '111111111'),
+            ('0222222222', 'Morgana', '222222222'),
+            ('0333333333','Pedro', '3333333333'),
+            ('0444444444', 'Thais', '444444444'),
+            ('0555555555', 'Rick', '555555555');
+            
+            Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
+            Values ('prova1', '12-12-2018', 10),
+            ('Trab1', '12-12-2018', 25),
+            ('Prova2', '12-12-2018', 10),
+            ('Trab2', '12-12-2018', 5),
+            ('Trab3', '12-12-2018', 10);
+	    
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
        
        a) Junção dos scripts anteriores em um único script 
         (Drop table + Create de tabelas e estruturas de dados + dados a serem inseridos)
         b) Criar um novo banco de dados para testar a restauracao 
         (em caso de falha na restauração o grupo não pontuará neste quesito)
-        c) formato .SQL
 
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
