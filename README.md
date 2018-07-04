@@ -213,11 +213,64 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
             ('Trab3', '12-12-2018', 10);
 	    
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
-       
-       a) Junção dos scripts anteriores em um único script 
-        (Drop table + Create de tabelas e estruturas de dados + dados a serem inseridos)
-        b) Criar um novo banco de dados para testar a restauracao 
-        (em caso de falha na restauração o grupo não pontuará neste quesito)
+    
+    drop table aluno;
+    
+	 Create Table Aluno(
+      	 Matrícula Varchar(10) Primary Key, 
+     	 Nome_aluno Varchar(85), 
+      	 dat_nasc Date);
+
+	Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
+ 	 Values ('11111111', 'Guilherme Bork','12-12-2002'),
+        ('2222222222', 'Fabio', '09-09-2002'),
+        ('3333333333', 'Daniel', '07-08-2001'),
+        ('4444444444', 'Vanessa', '08-09-2003'),
+        ('5555555555', 'Kamila', '02-09-2000');
+
+    drop table turma; 
+ 
+ 	Create Table Turma(
+      	Num_Turma Serial Primary Key,
+      	Nome_turma Varchar(85),
+	Data_Criacao Date);
+
+	Insert Into Turma( Nome_turma, Data_criacao)
+        Values ('A', '01-01-2017'),
+        ('B', '01-01-2017'),
+        ('C', '01-06-2017'),
+        ('D', '01-01-2018'),
+        ('X', '01-06-2018');
+        
+    drop table professor;
+    
+   	 Create Table Professor(
+     	 Matricula Varchar(10) Primary Key,
+ 	 Nome_prof Varchar(85),
+      	 Cpf_prof Varchar(11));
+	   
+	Insert Into Professor(Matricula, Nome_prof, cpf_prof)
+        Values ('0111111111', 'Cesar', '111111111'),
+        ('0222222222', 'Morgana', '222222222'),
+        ('0333333333','Pedro', '3333333333'),
+        ('0444444444', 'Thais', '444444444'),
+        ('0555555555', 'Rick', '555555555');
+        
+
+    drop table Avaliacoes;
+
+	Create Table Avaliacoes(
+        Num_avalicao Serial Primary Key,
+        Nome_avalicao Varchar(45),
+        Dat_Avalicao date,
+        Valor_avalicao float);    
+        
+        Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
+        Values ('prova1', '12-12-2018', 10),
+        ('Trab1', '12-12-2018', 25),
+        ('Prova2', '12-12-2018', 10),
+        ('Trab2', '12-12-2018', 5),
+        ('Trab3', '12-12-2018', 10);
 
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
