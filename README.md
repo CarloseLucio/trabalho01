@@ -317,29 +317,48 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 ![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2-4.png)	    
 	    
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
-            Select * from Aluno
-            Where dat_nasc < "12-12-2000" and dat_nasc > "12-12-2003"
+        Select * from Aluno
+       	Where dat_nasc > '12-12-2000' and dat_nasc < '12-12-2003'
+	
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/931.png)
 
-            Select * from Avaliacoes
-            Where Valor_avalicao = 10 or Valor_avaliacao = 5
+        Select * from Avaliacoes
+        Where Valor_avalicao = 10 or Valor_avalicao = 5
+	
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/932.png)	
 
-            Select * from Professor
-            Where Nome_Prof = "Pedro" or Nome_prof = "Thais"
+        Select * from Professor
+        Where Nome_Prof = 'Pedro' or Nome_prof = 'Thais'
+	
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/933.png)	
 
-            Select * from Turma
-            Where Nome_turma not "A"
+        Select * from Turma
+        Where Nome_turma != 'A'
+	
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/934.png)
 
-            Select * from Avaliacoes
-            Where Valor_avalicao = 10 and 
-            Dat_avalicao > "12-03-2017"
-            
-            Select * from Avaliacoes
-            Where Valor_avalicao > 10
-       
-            Select Nome_aluno as batutinhas from Aluno
-            Select Matrícula as Código_de_Barra from Aluno 
-            Select Dat_Avalicao as Data_Avaliacao from Avalicoes
-       
+        Select * from Avaliacoes
+        Where Valor_avalicao = 10 and 
+        Dat_avalicao > '12-03-2017'
+
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/935.png)
+
+        Select * from Avaliacoes
+        Where Valor_avalicao > 10
+   
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/936.png)
+   
+        Select Nome_aluno as batutinhas from Aluno
+	
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/937.png)	
+        
+	Select Matrícula as Código_de_Barra from Aluno 
+	
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/938.png)        
+	
+	Select dat_avalicao as data_avaliacao from avaliacoes
+
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/939.png)
     
     
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
