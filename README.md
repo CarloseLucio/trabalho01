@@ -176,7 +176,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
         Create Table Professor(
           Matricula Varchar(10) Primary Key,
            Nome_prof Varchar(85),
-           Cpf_prof Varchar(7));
+           Cpf_prof Varchar(11));
 
         Create Table Avaliacoes(
            Num_avalicao Serial Primary Key,
