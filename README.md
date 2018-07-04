@@ -83,7 +83,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
         
     Professor : Tabela que recebe os atributos dos professores 
    	
-	Matricula : Colocamos o campo matricula pelo fato de cada participante (professores e alunos) possuir uma matricula 
+		Matricula : Colocamos o campo matricula pelo fato de cada participante (professores e alunos) possuir uma matricula 
                       diferente de qualquer outra pessoa do sistema,sendo assim,é muito bom para usar de chave primária. 
 		      
     	Nome_prof : atributo para identificação do professor,é recebido no proprio cadastro. 
