@@ -297,17 +297,25 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
             Select * from Aluno
-            Where dat_nasc > "12-12-2000"
+            Where dat_nasc > '12-12-2000'
 
-           Select * from Aluno
-            Where dat_nasc > "12-12-2000"
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2%20-%201.png)	    
+	  
+            Select * from Aluno
+            Where dat_nasc < '12-12-2000'
+
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2%20-%202.png)
 
             Select * from Professor
-            Where matricula = "1111111111"
+       	    Where matricula = '0111111111'
 
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2-3.png)
+           
             Select * from Turma
-            Where dat_criacao >= "01-01-2017"
+            Where data_criacao >= '01-01-2017'
             
+![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2-4.png)	    
+	    
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
             Select * from Aluno
             Where dat_nasc < "12-12-2000" and dat_nasc > "12-12-2003"
