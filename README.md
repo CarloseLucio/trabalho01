@@ -53,7 +53,9 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
         
     
 #### 5.1 Validação do Modelo Conceitual
-    [Grupo01]: [Lúcio Ribeiro dos Santos e Carlos Breno Norato Rosa]
+    [Grupo01]: [Leonardo Fáfá e Rafael Rodrigues]
+    [Grupo02]: [Thamiris Moreira e Lia Casati]
+    
     
 ## Marco de Entrega 01 em: (20/04/2018)<br>
 
