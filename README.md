@@ -112,93 +112,135 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 
 ### 7	MODELO FÍSICO<br>
-       Create Table Aluno(
-          Matrícula Varchar(10) Primary Key, 
-          Nome_aluno Varchar(85), 
-          dat_nasc Date);
+      
+	CREATE TABLE aluno (
+	    matricula_ varChar(100),
+	    FK_pessoa_cpf varchar(100),
+	    FK_turma_numero_turma int,
+	    PRIMARY KEY (matricula_, FK_pessoa_cpf)
+	);
 
-        Create Table Turma(
-          Num_Turma Serial Primary Key,
-          Nome_turma Varchar(85),
-          Data_Criacao Date);
+	CREATE TABLE turma (
+	    numero_turma int PRIMARY KEY,
+	    nome_turma varChar(100)
+	);
 
-        Create Table Professor(
-          Matricula Varchar(10) Primary Key,
-           Nome_prof Varchar(85),
-           Cpf_prof Varchar(11));
+	CREATE TABLE professor (
+	    cod_professor Serial,
+	    FK_pessoa_cpf varchar(100),
+	    FK_endereco__codigo Serial,
+	    PRIMARY KEY (cod_professor, FK_pessoa_cpf)
+	);
 
-        Create Table Avaliacoes(
-           Num_avalicao Serial Primary Key,
-           Nome_avalicao Varchar(45),
-           Dat_Avalicao date,
-           Valor_avalicao float);      
+	CREATE TABLE avaliacao (
+	    valor_avaliacao float,
+	    data_avaliacao date,
+	    numero_avaliacao Serial PRIMARY KEY,
+	    nome_avaliacao varChar(100)
+	);
+
+	CREATE TABLE endereco_ (
+	    numero int,
+	    codigo Serial PRIMARY KEY,
+	    FK_aluno_matricula_ varChar(100),
+	    FK_aluno_FK_pessoa_cpf varchar(100),
+	    FK_complemento_cod_complemento int,
+	    FK_bairro__numero_bairro int
+	);
+
+	CREATE TABLE bairro_ (
+	    nome_bairro varChar(100),
+	    numero_bairro int PRIMARY KEY,
+	    FK_cidade_numero_cidade int
+	);
+
+	CREATE TABLE cidade (
+	    nome_cidade varChar(100),
+	    numero_cidade int PRIMARY KEY,
+	    FK_estado_numero_estado Serial
+	);
+
+	CREATE TABLE pais (
+	    nome_pais varChar(100),
+	    numero_pais int PRIMARY KEY
+	);
+
+	CREATE TABLE estado (
+	    nome_estado varChar(100),
+	    numero_estado Serial PRIMARY KEY,
+	    FK_pais_numero_pais int
+	);
+
+	CREATE TABLE complemento (
+	    cod_complemento int PRIMARY KEY,
+	    dec_complemento varChar(100)
+	);
+
+	CREATE TABLE logadouro (
+	    cod Serial PRIMARY KEY,
+	    tipo varChar(100),
+	    nome varChar(200),
+	    FK_endereco__codigo Serial
+	);
+
+	CREATE TABLE Ano (
+	    cod Serial PRIMARY KEY,
+	    desc varChar(100),
+	    FK_turma_numero_turma int
+	);
+
+	CREATE TABLE pessoa (
+	    nome varchar(100),
+	    cpf varchar(100) PRIMARY KEY,
+	    data_de_nascimento date
+	);
+
+	CREATE TABLE materia (
+	    cod Serial PRIMARY KEY,
+	    desc varChar(100)
+	);
+
+	CREATE TABLE leciona (
+	    FK_turma_numero_turma int,
+	    FK_professor_cod_professor Serial,
+	    FK_professor_FK_pessoa_cpf varchar(100)
+	);
+
+	CREATE TABLE aplica (
+	    FK_avaliacao_numero_avaliacao Serial,
+	    FK_professor_cod_professor Serial,
+	    FK_professor_FK_pessoa_cpf varchar(100)
+	);
+
+	CREATE TABLE faz (
+	    FK_aluno_matricula_ varChar(100),
+	    FK_aluno_FK_pessoa_cpf varchar(100),
+	    FK_avaliacao_numero_avaliacao Serial,
+	    nota
+	);
+
+	CREATE TABLE ensina (
+	    FK_professor_cod_professor Serial,
+	    FK_professor_FK_pessoa_cpf varchar(100),
+	    FK_materia_cod Serial
+	);
         
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
-        
-          Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
-			Values ('11111111', 'Guilherme Bork','12-12-2002'),
-            ('2222222222', 'Fabio', '09-09-2002'),
-            ('3333333333', 'Daniel', '07-08-2001'),
-            ('4444444444', 'Vanessa', '08-09-2003'),
-            ('5555555555', 'Kamila', '02-09-2000');
-             
-            Insert Into Turma( Nome_turma, Data_criacao)
-            Values ('A', '01-01-2017'),
-            ('B', '01-01-2017'),
-            ('C', '01-06-2017'),
-            ('D', '01-01-2018'),
-            ('X', '01-06-2018');
             
-         Insert Into Professor(Matricula, Nome_prof, cpf_prof)
-            Values ('0111111111', 'Cesar', '111111111'),
-            ('0222222222', 'Morgana', '222222222'),
-            ('0333333333','Pedro', '3333333333'),
-            ('0444444444', 'Thais', '444444444'),
-            ('0555555555', 'Rick', '555555555');
-            
-            Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
-            Values ('prova1', '12-12-2018', 10),
-            ('Trab1', '12-12-2018', 25),
-            ('Prova2', '12-12-2018', 10),
-            ('Trab2', '12-12-2018', 5),
-            ('Trab3', '12-12-2018', 10);
-             
-#### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
-          Create Table Aluno(
-          Matrícula Varchar(10) Primary Key, 
-          Nome_aluno Varchar(85), 
-          dat_nasc Date);
-
-        Create Table Turma(
-          Num_Turma Serial Primary Key,
-          Nome_turma Varchar(85),
-          Data_Criacao Date);
-
-        Create Table Professor(
-          Matricula Varchar(10) Primary Key,
-           Nome_prof Varchar(85),
-           Cpf_prof Varchar(11));
-
-        Create Table Avaliacoes(
-           Num_avalicao Serial Primary Key,
-           Nome_avalicao Varchar(45),
-           Dat_Avalicao date,
-           Valor_avalicao float);    
-          
-	  Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
-	  Values ('11111111', 'Guilherme Bork','12-12-2002'),
-            ('2222222222', 'Fabio', '09-09-2002'),
-            ('3333333333', 'Daniel', '07-08-2001'),
-            ('4444444444', 'Vanessa', '08-09-2003'),
-            ('5555555555', 'Kamila', '02-09-2000');
-             
-            Insert Into Turma( Nome_turma, Data_criacao)
-            Values ('A', '01-01-2017'),
-            ('B', '01-01-2017'),
-            ('C', '01-06-2017'),
-            ('D', '01-01-2018'),
-            ('X', '01-06-2018');
+	Insert Into pessoa (cpf,nome,data_de_nascimento)
+ 	Values ('11111111', 'Guilherme Bork','12-12-2002'),
+        ('2222222222', 'Fabio', '09-09-2002'),
+        ('3333333333', 'Daniel', '07-08-2001'),
+        ('4444444444', 'Vanessa', '08-09-2003'),
+        ('5555555555', 'Kamila', '02-09-2000');
+         
+        Insert Into Turma( nome_turma, numero_turma)
+        Values ('A', '00'),
+           ('B', '01'),
+           ('C', '02'),
+           ('D', '03'),
+           ('X', '04');
             
          Insert Into Professor(Matricula, Nome_prof, cpf_prof)
             Values ('0111111111', 'Cesar', '111111111'),
@@ -214,16 +256,215 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
             ('Trab2', '12-12-2018', 5),
             ('Trab3', '12-12-2018', 10);
 	    
+	    
+	Insert into ano(cod,descricao,FK_turma_numero_turma)
+		values(01,'2013','00'),
+   		(02,'2014','01'),  
+    		(03,'2015','02'),  
+    		(04,'2016','03'),  
+    		(05,'2017','04');
+		
+	
+	Insert into pais(nome_pais,numero_pais)
+		values('BR',00),
+   		('USA',01),  
+    		('FRA',02),  
+    		('CHI',03),  
+    		('ARG',04);
+		
+		
+	Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
+		values('ES',00,00),
+   		('RJ',01,00),  
+    		('SP',02,00),  
+    		('NY',03,01),  
+    		('RO',04,00);
+             
+#### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
+        
+	CREATE TABLE aluno (
+	    matricula_ varChar(100),
+	    FK_pessoa_cpf varchar(100),
+	    FK_turma_numero_turma int,
+	    PRIMARY KEY (matricula_, FK_pessoa_cpf)
+	);
+
+	CREATE TABLE turma (
+	    numero_turma int PRIMARY KEY,
+	    nome_turma varChar(100)
+	);
+
+	CREATE TABLE professor (
+	    cod_professor Serial,
+	    FK_pessoa_cpf varchar(100),
+	    FK_endereco__codigo Serial,
+	    PRIMARY KEY (cod_professor, FK_pessoa_cpf)
+	);
+
+	CREATE TABLE avaliacao (
+	    valor_avaliacao float,
+	    data_avaliacao date,
+	    numero_avaliacao Serial PRIMARY KEY,
+	    nome_avaliacao varChar(100)
+	);
+
+	CREATE TABLE endereco_ (
+	    numero int,
+	    codigo Serial PRIMARY KEY,
+	    FK_aluno_matricula_ varChar(100),
+	    FK_aluno_FK_pessoa_cpf varchar(100),
+	    FK_complemento_cod_complemento int,
+	    FK_bairro__numero_bairro int
+	);
+
+	CREATE TABLE bairro_ (
+	    nome_bairro varChar(100),
+	    numero_bairro int PRIMARY KEY,
+	    FK_cidade_numero_cidade int
+	);
+
+	CREATE TABLE cidade (
+	    nome_cidade varChar(100),
+	    numero_cidade int PRIMARY KEY,
+	    FK_estado_numero_estado Serial
+	);
+
+	CREATE TABLE pais (
+	    nome_pais varChar(100),
+	    numero_pais int PRIMARY KEY
+	);
+
+	CREATE TABLE estado (
+	    nome_estado varChar(100),
+	    numero_estado Serial PRIMARY KEY,
+	    FK_pais_numero_pais int
+	);
+
+	CREATE TABLE complemento (
+	    cod_complemento int PRIMARY KEY,
+	    dec_complemento varChar(100)
+	);
+
+	CREATE TABLE logadouro (
+	    cod Serial PRIMARY KEY,
+	    tipo varChar(100),
+	    nome varChar(200),
+	    FK_endereco__codigo Serial
+	);
+
+	CREATE TABLE Ano (
+	    cod Serial PRIMARY KEY,
+	    desc varChar(100),
+	    FK_turma_numero_turma int
+	);
+
+	CREATE TABLE pessoa (
+	    nome varchar(100),
+	    cpf varchar(100) PRIMARY KEY,
+	    data_de_nascimento date
+	);
+
+	CREATE TABLE materia (
+	    cod Serial PRIMARY KEY,
+	    desc varChar(100)
+	);
+
+	CREATE TABLE leciona (
+	    FK_turma_numero_turma int,
+	    FK_professor_cod_professor Serial,
+	    FK_professor_FK_pessoa_cpf varchar(100)
+	);
+
+	CREATE TABLE aplica (
+	    FK_avaliacao_numero_avaliacao Serial,
+	    FK_professor_cod_professor Serial,
+	    FK_professor_FK_pessoa_cpf varchar(100)
+	);
+
+	CREATE TABLE faz (
+	    FK_aluno_matricula_ varChar(100),
+	    FK_aluno_FK_pessoa_cpf varchar(100),
+	    FK_avaliacao_numero_avaliacao Serial,
+	    nota
+	);
+
+	CREATE TABLE ensina (
+	    FK_professor_cod_professor Serial,
+	    FK_professor_FK_pessoa_cpf varchar(100),
+	    FK_materia_cod Serial
+	);
+	
+	Insert Into pessoa (cpf,nome,data_de_nascimento)
+ 	Values ('11111111', 'Guilherme Bork','12-12-2002'),
+        ('2222222222', 'Fabio', '09-09-2002'),
+        ('3333333333', 'Daniel', '07-08-2001'),
+        ('4444444444', 'Vanessa', '08-09-2003'),
+        ('5555555555', 'Kamila', '02-09-2000');
+
+	  Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
+	  Values ('11111111', 'Guilherme Bork','12-12-2002'),
+            ('2222222222', 'Fabio', '09-09-2002'),
+            ('3333333333', 'Daniel', '07-08-2001'),
+            ('4444444444', 'Vanessa', '08-09-2003'),
+            ('5555555555', 'Kamila', '02-09-2000');
+             
+           Insert Into Turma( nome_turma, numero_turma)
+           Values ('A', '00'),
+           ('B', '01'),
+           ('C', '02'),
+           ('D', '03'),
+           ('X', '04');
+            
+         Insert Into Professor(Matricula, Nome_prof, cpf_prof)
+            Values ('0111111111', 'Cesar', '111111111'),
+            ('0222222222', 'Morgana', '222222222'),
+            ('0333333333','Pedro', '3333333333'),
+            ('0444444444', 'Thais', '444444444'),
+            ('0555555555', 'Rick', '555555555');
+            
+            Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
+            Values ('prova1', '12-12-2018', 10),
+            ('Trab1', '12-12-2018', 25),
+            ('Prova2', '12-12-2018', 10),
+            ('Trab2', '12-12-2018', 5),
+            ('Trab3', '12-12-2018', 10);
+	    
+	    
+	     Insert into ano(cod,descricao,FK_turma_numero_turma)
+	         values(01,'2013','00'),
+   		(02,'2014','01'),  
+    		(03,'2015','02'),  
+    		(04,'2016','03'),  
+    		(05,'2017','04');
+		
+		
+	Insert into pais(nome_pais,numero_pais)
+		values('BR',00),
+   		('USA',01),  
+    		('FRA',02),  
+    		('CHI',03),  
+    		('ARG',04);
+		
+		
+	Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
+		values('ES',00,00),
+   		('RJ',01,00),  
+    		('SP',02,00),  
+    		('NY',03,01),  
+    		('RO',04,00);
+	    
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
     
-    drop table aluno;
-    
-	 Create Table Aluno(
-      	 Matrícula Varchar(10) Primary Key, 
-     	 Nome_aluno Varchar(85), 
-      	 dat_nasc Date);
+    drop table pessoa;
+	 
+	CREATE TABLE pessoa (
+    	nome varchar(100),
+   	cpf varchar(100) PRIMARY KEY,
+   	data_de_nascimento date
+	);
 
-	Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
+
+	Insert Into pessoa (cpf,nome,data_de_nascimento)
  	 Values ('11111111', 'Guilherme Bork','12-12-2002'),
         ('2222222222', 'Fabio', '09-09-2002'),
         ('3333333333', 'Daniel', '07-08-2001'),
@@ -231,25 +472,27 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
         ('5555555555', 'Kamila', '02-09-2000');
 
     drop table turma; 
- 
- 	Create Table Turma(
-      	Num_Turma Serial Primary Key,
-      	Nome_turma Varchar(85),
-	Data_Criacao Date);
-
-	Insert Into Turma( Nome_turma, Data_criacao)
-        Values ('A', '01-01-2017'),
-        ('B', '01-01-2017'),
-        ('C', '01-06-2017'),
-        ('D', '01-01-2018'),
-        ('X', '01-06-2018');
+  	
+	CREATE TABLE turma (
+    	numero_turma int PRIMARY KEY,
+    	nome_turma varChar(100)
+	);
+ 	
+      Insert Into Turma( nome_turma, numero_turma)
+           Values ('A', '00'),
+           ('B', '01'),
+           ('C', '02'),
+           ('D', '03'),
+           ('X', '04');
         
     drop table professor;
     
-   	 Create Table Professor(
-     	 Matricula Varchar(10) Primary Key,
- 	 Nome_prof Varchar(85),
-      	 Cpf_prof Varchar(11));
+        CREATE TABLE professor (
+   	cod_professor Serial,
+    	FK_pessoa_cpf varchar(100),
+    	FK_endereco__codigo Serial,
+    	PRIMARY KEY (cod_professor, FK_pessoa_cpf)
+		);
 	   
 	Insert Into Professor(Matricula, Nome_prof, cpf_prof)
         Values ('0111111111', 'Cesar', '111111111'),
@@ -261,11 +504,12 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
     drop table Avaliacoes;
 
-	Create Table Avaliacoes(
-        Num_avalicao Serial Primary Key,
-        Nome_avalicao Varchar(45),
-        Dat_Avalicao date,
-        Valor_avalicao float);    
+	CREATE TABLE avaliacao (
+  	valor_avaliacao float,
+ 	data_avaliacao date,
+  	numero_avaliacao Serial PRIMARY KEY,
+   	nome_avaliacao varChar(100)
+	);  
         
         Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
         Values ('prova1', '12-12-2018', 10),
@@ -274,6 +518,52 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
         ('Trab2', '12-12-2018', 5),
         ('Trab3', '12-12-2018', 10);
 
+       
+   	drop table ano;
+	
+	 CREATE TABLE Ano (
+   	 cod Serial PRIMARY KEY,
+   	 desc varChar(100),
+   	 FK_turma_numero_turma int
+		);
+       
+       
+       Insert into ano(cod,descricao,FK_turma_numero_turma)
+		values(01,'2013','00'),
+   		(02,'2014','01'),  
+    		(03,'2015','02'),  
+    		(04,'2016','03'),  
+    		(05,'2017','04');
+	
+	drop table pais;
+	
+	CREATE TABLE pais (
+    	nome_pais varChar(100),
+    	numero_pais int PRIMARY KEY
+	);
+	
+	
+	Insert into pais(nome_pais,numero_pais)
+		values('BR',00),
+   		('USA',01),  
+    		('FRA',02),  
+    		('CHI',03),  
+    		('ARG',04);
+		
+	drop table estado;
+		CREATE TABLE estado (
+    		nome_estado varChar(100),
+    		numero_estado Serial PRIMARY KEY,
+   		 FK_pais_numero_pais int
+		);
+
+	
+	Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
+		values('ES',00,00),
+   		('RJ',01,00),  
+    		('SP',02,00),  
+    		('NY',03,01),  
+    		('RO',04,00);
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
    
