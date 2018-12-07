@@ -280,6 +280,14 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
     		('NY',03,01),  
     		('RO',04,00);
              
+	Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
+		values('Serra',00,00),
+   		('Vitoria',01,00),  
+    		('Rio de Janeiro',02,01),  
+    		('São Paulo',03,02),  
+    		('Cariacica',04,00);
+		
+		
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
         
 	CREATE TABLE aluno (
@@ -453,6 +461,14 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
     		('NY',03,01),  
     		('RO',04,00);
 	    
+	   Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
+		values('Serra',00,00),
+   		('Vitoria',01,00),  
+    		('Rio de Janeiro',02,01),  
+    		('São Paulo',03,02),  
+    		('Cariacica',04,00);
+		
+		
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
     
     drop table pessoa;
@@ -564,6 +580,15 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
     		('SP',02,00),  
     		('NY',03,01),  
     		('RO',04,00);
+	
+	drop table cidade;
+	
+	Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
+		values('Serra',00,00),
+   		('Vitoria',01,00),  
+    		('Rio de Janeiro',02,01),  
+    		('São Paulo',03,02),  
+    		('Cariacica',04,00);
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
    
