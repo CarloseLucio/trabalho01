@@ -113,37 +113,35 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 ### 7	MODELO FÍSICO<br>
       
+
 	CREATE TABLE aluno (
-	    matricula_ varChar(100),
+	    matricula varChar(100),
 	    FK_pessoa_cpf varchar(100),
-	    FK_turma_numero_turma int,
-	    PRIMARY KEY (matricula_, FK_pessoa_cpf)
+	    FK_turma_numero_turma varChar(100),
+	    PRIMARY KEY (matricula, FK_pessoa_cpf)
 	);
 
 	CREATE TABLE turma (
-	    numero_turma int PRIMARY KEY,
+	    numero_turma varChar(100) PRIMARY KEY,
 	    nome_turma varChar(100)
 	);
 
 	CREATE TABLE professor (
-	    cod_professor Serial,
+	    cod_professor varChar(100),
 	    FK_pessoa_cpf varchar(100),
-	    FK_endereco__codigo Serial,
 	    PRIMARY KEY (cod_professor, FK_pessoa_cpf)
 	);
 
 	CREATE TABLE avaliacao (
 	    valor_avaliacao float,
 	    data_avaliacao date,
-	    numero_avaliacao Serial PRIMARY KEY,
+	    numero_avaliacao int PRIMARY KEY,
 	    nome_avaliacao varChar(100)
 	);
 
 	CREATE TABLE endereco_ (
 	    numero int,
-	    codigo Serial PRIMARY KEY,
-	    FK_aluno_matricula_ varChar(100),
-	    FK_aluno_FK_pessoa_cpf varchar(100),
+	    codigo varChar(100) PRIMARY KEY,
 	    FK_complemento_cod_complemento int,
 	    FK_bairro__numero_bairro int
 	);
@@ -157,18 +155,18 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	CREATE TABLE cidade (
 	    nome_cidade varChar(100),
 	    numero_cidade int PRIMARY KEY,
-	    FK_estado_numero_estado Serial
+	    FK_estado_numero_estado int
 	);
 
 	CREATE TABLE pais (
 	    nome_pais varChar(100),
-	    numero_pais int PRIMARY KEY
+	    numero_pais varChar(100) PRIMARY KEY
 	);
 
 	CREATE TABLE estado (
 	    nome_estado varChar(100),
-	    numero_estado Serial PRIMARY KEY,
-	    FK_pais_numero_pais int
+	    numero_estado int PRIMARY KEY,
+	    FK_pais_numero_pais varChar(100)
 	);
 
 	CREATE TABLE complemento (
@@ -180,50 +178,146 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    cod Serial PRIMARY KEY,
 	    tipo varChar(100),
 	    nome varChar(200),
-	    FK_endereco__codigo Serial
+	    FK_endereco__codigo varChar(100)
 	);
 
 	CREATE TABLE Ano (
-	    cod Serial PRIMARY KEY,
-	    desc varChar(100),
-	    FK_turma_numero_turma int
+	    cod varChar(200) PRIMARY KEY,
+	    descricao varChar(100),
+	    FK_turma_numero_turma varChar(100)
 	);
 
 	CREATE TABLE pessoa (
 	    nome varchar(100),
 	    cpf varchar(100) PRIMARY KEY,
-	    data_de_nascimento date
+	    data_de_nascimento date,
+	    FK_endereco__codigo varChar(100)
 	);
 
 	CREATE TABLE materia (
-	    cod Serial PRIMARY KEY,
-	    desc varChar(100)
+	    cod int PRIMARY KEY,
+	    descricao varChar(100)
 	);
 
 	CREATE TABLE leciona (
-	    FK_turma_numero_turma int,
-	    FK_professor_cod_professor Serial,
+	    FK_turma_numero_turma varChar(100),
+	    FK_professor_cod_professor varChar(100),
 	    FK_professor_FK_pessoa_cpf varchar(100)
 	);
 
 	CREATE TABLE aplica (
-	    FK_avaliacao_numero_avaliacao Serial,
-	    FK_professor_cod_professor Serial,
+	    FK_avaliacao_numero_avaliacao int,
+	    FK_professor_cod_professor varChar(100),
 	    FK_professor_FK_pessoa_cpf varchar(100)
 	);
 
 	CREATE TABLE faz (
-	    FK_aluno_matricula_ varChar(100),
+	    FK_aluno_matricula varChar(100),
 	    FK_aluno_FK_pessoa_cpf varchar(100),
-	    FK_avaliacao_numero_avaliacao Serial,
-	    nota
+	    FK_avaliacao_numero_avaliacao int,
+	    nota float
 	);
 
 	CREATE TABLE ensina (
-	    FK_professor_cod_professor Serial,
+	    FK_professor_cod_professor varChar(100),
 	    FK_professor_FK_pessoa_cpf varchar(100),
-	    FK_materia_cod Serial
+	    FK_materia_cod int
 	);
+
+	ALTER TABLE aluno ADD CONSTRAINT FK_aluno_1
+	    FOREIGN KEY (FK_pessoa_cpf)
+	    REFERENCES pessoa (cpf)
+	    ON DELETE CASCADE ON UPDATE CASCADE;
+
+	ALTER TABLE aluno ADD CONSTRAINT FK_aluno_2
+	    FOREIGN KEY (FK_turma_numero_turma)
+	    REFERENCES turma (numero_turma)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE professor ADD CONSTRAINT FK_professor_1
+	    FOREIGN KEY (FK_pessoa_cpf)
+	    REFERENCES pessoa (cpf)
+	    ON DELETE CASCADE ON UPDATE CASCADE;
+
+	ALTER TABLE endereco_ ADD CONSTRAINT FK_endereco__1
+	    FOREIGN KEY (FK_complemento_cod_complemento)
+	    REFERENCES complemento (cod_complemento)
+	    ON DELETE CASCADE ON UPDATE CASCADE;
+
+	ALTER TABLE endereco_ ADD CONSTRAINT FK_endereco__2
+	    FOREIGN KEY (FK_bairro__numero_bairro)
+	    REFERENCES bairro_ (numero_bairro)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE bairro_ ADD CONSTRAINT FK_bairro__1
+	    FOREIGN KEY (FK_cidade_numero_cidade)
+	    REFERENCES cidade (numero_cidade)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE cidade ADD CONSTRAINT FK_cidade_1
+	    FOREIGN KEY (FK_estado_numero_estado)
+	    REFERENCES estado (numero_estado)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE estado ADD CONSTRAINT FK_estado_1
+	    FOREIGN KEY (FK_pais_numero_pais)
+	    REFERENCES pais (numero_pais)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE logadouro ADD CONSTRAINT FK_logadouro_1
+	    FOREIGN KEY (FK_endereco__codigo)
+	    REFERENCES endereco_ (codigo)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE Ano ADD CONSTRAINT FK_Ano_1
+	    FOREIGN KEY (FK_turma_numero_turma)
+	    REFERENCES turma (numero_turma)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE pessoa ADD CONSTRAINT FK_pessoa_1
+	    FOREIGN KEY (FK_endereco__codigo)
+	    REFERENCES endereco_ (codigo)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE leciona ADD CONSTRAINT FK_leciona_0
+	    FOREIGN KEY (FK_turma_numero_turma)
+	    REFERENCES turma (numero_turma)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE leciona ADD CONSTRAINT FK_leciona_1
+	    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
+	    REFERENCES professor (cod_professor, FK_pessoa_cpf)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE aplica ADD CONSTRAINT FK_aplica_0
+	    FOREIGN KEY (FK_avaliacao_numero_avaliacao)
+	    REFERENCES avaliacao (numero_avaliacao)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE aplica ADD CONSTRAINT FK_aplica_1
+	    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
+	    REFERENCES professor (cod_professor, FK_pessoa_cpf)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE faz ADD CONSTRAINT FK_faz_0
+	    FOREIGN KEY (FK_aluno_matricula, FK_aluno_FK_pessoa_cpf)
+	    REFERENCES aluno (matricula, FK_pessoa_cpf)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE faz ADD CONSTRAINT FK_faz_1
+	    FOREIGN KEY (FK_avaliacao_numero_avaliacao)
+	    REFERENCES avaliacao (numero_avaliacao)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE ensina ADD CONSTRAINT FK_ensina_0
+	    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
+	    REFERENCES professor (cod_professor, FK_pessoa_cpf)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE ensina ADD CONSTRAINT FK_ensina_1
+	    FOREIGN KEY (FK_materia_cod)
+	    REFERENCES materia (cod)
+	    ON DELETE SET NULL ON UPDATE CASCADE;
         
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
@@ -291,36 +385,33 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
         
 	CREATE TABLE aluno (
-	    matricula_ varChar(100),
+	    matricula varChar(100),
 	    FK_pessoa_cpf varchar(100),
-	    FK_turma_numero_turma int,
-	    PRIMARY KEY (matricula_, FK_pessoa_cpf)
+	    FK_turma_numero_turma varChar(100),
+	    PRIMARY KEY (matricula, FK_pessoa_cpf)
 	);
 
 	CREATE TABLE turma (
-	    numero_turma int PRIMARY KEY,
+	    numero_turma varChar(100) PRIMARY KEY,
 	    nome_turma varChar(100)
 	);
 
 	CREATE TABLE professor (
-	    cod_professor Serial,
+	    cod_professor varChar(100),
 	    FK_pessoa_cpf varchar(100),
-	    FK_endereco__codigo Serial,
 	    PRIMARY KEY (cod_professor, FK_pessoa_cpf)
 	);
 
 	CREATE TABLE avaliacao (
 	    valor_avaliacao float,
 	    data_avaliacao date,
-	    numero_avaliacao Serial PRIMARY KEY,
+	    numero_avaliacao int PRIMARY KEY,
 	    nome_avaliacao varChar(100)
 	);
 
 	CREATE TABLE endereco_ (
 	    numero int,
-	    codigo Serial PRIMARY KEY,
-	    FK_aluno_matricula_ varChar(100),
-	    FK_aluno_FK_pessoa_cpf varchar(100),
+	    codigo varChar(100) PRIMARY KEY,
 	    FK_complemento_cod_complemento int,
 	    FK_bairro__numero_bairro int
 	);
@@ -334,18 +425,18 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	CREATE TABLE cidade (
 	    nome_cidade varChar(100),
 	    numero_cidade int PRIMARY KEY,
-	    FK_estado_numero_estado Serial
+	    FK_estado_numero_estado int
 	);
 
 	CREATE TABLE pais (
 	    nome_pais varChar(100),
-	    numero_pais int PRIMARY KEY
+	    numero_pais varChar(100) PRIMARY KEY
 	);
 
 	CREATE TABLE estado (
 	    nome_estado varChar(100),
-	    numero_estado Serial PRIMARY KEY,
-	    FK_pais_numero_pais int
+	    numero_estado int PRIMARY KEY,
+	    FK_pais_numero_pais varChar(100)
 	);
 
 	CREATE TABLE complemento (
@@ -357,49 +448,50 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    cod Serial PRIMARY KEY,
 	    tipo varChar(100),
 	    nome varChar(200),
-	    FK_endereco__codigo Serial
+	    FK_endereco__codigo varChar(100)
 	);
 
 	CREATE TABLE Ano (
-	    cod Serial PRIMARY KEY,
-	    desc varChar(100),
-	    FK_turma_numero_turma int
+	    cod varChar(200) PRIMARY KEY,
+	    descricao varChar(100),
+	    FK_turma_numero_turma varChar(100)
 	);
 
 	CREATE TABLE pessoa (
 	    nome varchar(100),
 	    cpf varchar(100) PRIMARY KEY,
-	    data_de_nascimento date
+	    data_de_nascimento date,
+	    FK_endereco__codigo varChar(100)
 	);
 
 	CREATE TABLE materia (
-	    cod Serial PRIMARY KEY,
-	    desc varChar(100)
+	    cod int PRIMARY KEY,
+	    descricao varChar(100)
 	);
 
 	CREATE TABLE leciona (
-	    FK_turma_numero_turma int,
-	    FK_professor_cod_professor Serial,
+	    FK_turma_numero_turma varChar(100),
+	    FK_professor_cod_professor varChar(100),
 	    FK_professor_FK_pessoa_cpf varchar(100)
 	);
 
 	CREATE TABLE aplica (
-	    FK_avaliacao_numero_avaliacao Serial,
-	    FK_professor_cod_professor Serial,
+	    FK_avaliacao_numero_avaliacao int,
+	    FK_professor_cod_professor varChar(100),
 	    FK_professor_FK_pessoa_cpf varchar(100)
 	);
 
 	CREATE TABLE faz (
-	    FK_aluno_matricula_ varChar(100),
+	    FK_aluno_matricula varChar(100),
 	    FK_aluno_FK_pessoa_cpf varchar(100),
-	    FK_avaliacao_numero_avaliacao Serial,
-	    nota
+	    FK_avaliacao_numero_avaliacao int,
+	    nota float
 	);
 
 	CREATE TABLE ensina (
-	    FK_professor_cod_professor Serial,
+	    FK_professor_cod_professor varChar(100),
 	    FK_professor_FK_pessoa_cpf varchar(100),
-	    FK_materia_cod Serial
+	    FK_materia_cod int
 	);
 	
 	Insert Into pessoa (cpf,nome,data_de_nascimento)
