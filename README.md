@@ -322,43 +322,11 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
             
-	Insert Into pessoa (cpf,nome,data_de_nascimento)
- 	Values ('11111111', 'Guilherme Bork','12-12-2002'),
-        ('2222222222', 'Fabio', '09-09-2002'),
-        ('3333333333', 'Daniel', '07-08-2001'),
-        ('4444444444', 'Vanessa', '08-09-2003'),
-        ('5555555555', 'Kamila', '02-09-2000');
-         
-        Insert Into Turma( nome_turma, numero_turma)
-        Values ('A', '00'),
-           ('B', '01'),
-           ('C', '02'),
-           ('D', '03'),
-           ('X', '04');
-            
-         Insert Into Professor(Matricula, Nome_prof, cpf_prof)
-            Values ('0111111111', 'Cesar', '111111111'),
-            ('0222222222', 'Morgana', '222222222'),
-            ('0333333333','Pedro', '3333333333'),
-            ('0444444444', 'Thais', '444444444'),
-            ('0555555555', 'Rick', '555555555');
-            
-            Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
-            Values ('prova1', '12-12-2018', 10),
-            ('Trab1', '12-12-2018', 25),
-            ('Prova2', '12-12-2018', 10),
-            ('Trab2', '12-12-2018', 5),
-            ('Trab3', '12-12-2018', 10);
-	    
-	    
-	Insert into ano(cod,descricao,FK_turma_numero_turma)
-		values(01,'2013','00'),
-   		(02,'2014','01'),  
-    		(03,'2015','02'),  
-    		(04,'2016','03'),  
-    		(05,'2017','04');
-		
-	
+	  Insert into complemento(cod_complemento,dec_complemento)
+		values('01','casa'),
+		('02','condominio'),    		
+		('03','apartamento');
+ 
 	Insert into pais(nome_pais,numero_pais)
 		values('BR',00),
    		('USA',01),  
@@ -366,20 +334,111 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
     		('CHI',03),  
     		('ARG',04);
 		
-		
 	Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
 		values('ES',00,00),
    		('RJ',01,00),  
     		('SP',02,00),  
     		('NY',03,01),  
     		('RO',04,00);
-             
-	Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
+	    
+	   Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
 		values('Serra',00,00),
    		('Vitoria',01,00),  
     		('Rio de Janeiro',02,01),  
     		('São Paulo',03,02),  
-    		('Cariacica',04,00);
+    		('Cariacica',04,00),
+		('Vila Velha',05,00);
+			
+	       
+	   Insert into bairro_(nome_bairro,numero_bairro ,fk_cidade_numero_cidade)
+		values('nova almeida',00,00),
+   		('jardim da penha',01,01),  
+    		('laranjeiras',02,00),  
+    		('Cobilândia',03,05),  
+    		('Jardim Camburi',04,01);	
+ 
+
+	   Insert into endereco_(numero,codigo,fk_complemento_cod_complemento,fk_bairro__numero_bairro)
+			values(01,'1111',01,00),
+			(02,'2222',01,01),  
+			(03,'3333',02,02),  
+			(04,'4444',03,03),  
+			(05,'5555',02,04);	
+ 
+	 Insert Into Turma( nome_turma, numero_turma)
+		   Values ('A', '00'),
+		   ('B', '01'),
+		   ('C', '02'),
+		   ('D', '03'),
+		   ('X', '04');
+
+	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo)
+ 	Values ('11111111', 'Guilherme Bork','12-12-2002','1111'),
+        ('2222222222', 'Fabio', '09-09-2002','3333'),
+        ('3333333333', 'Daniel', '07-08-2001','2222'),
+        ('4444444444', 'Vanessa', '08-09-2003','3333'),
+        ('5555555555', 'Kamila', '02-09-2000','4444'),
+	('6666666666', 'Paulo', '17-09-1985','5555'),
+        ('7777777777', 'Jeferson', '20-06-1976','5555');
+
+
+	  Insert Into aluno (matricula, fk_pessoa_cpf, fk_turma_numero_turma)
+	  Values ('00000', '11111111','00'),
+            ('11111', '2222222222', '00'),
+            ('22222', '3333333333', '02'),
+            ('33333', '4444444444', '03'),
+            ('55555', '5555555555', '01');
+             
+			
+         Insert Into professor(cod_professor, fk_pessoa_cpf)
+            Values ('01111', '6666666666'),
+           		 ('02222', '7777777777');
+           
+            
+            
+            Insert Into avaliacao(Nome_avaliacao, data_avaliacao, Valor_avaliacao,numero_avaliacao)
+            Values ('prova1', '12-12-2018', 10,1),
+            ('Trab1', '12-12-2018', 25,2),
+            ('Prova2', '13-12-2018', 10,3),
+            ('Trab2', '13-12-2018', 5,4),
+            ('Trab3', '13-12-2018', 10,5);
+	    
+
+            		Insert Into aplica(fk_avaliacao_numero_avaliacao,fk_professor_cod_professor,fk_professor_fk_pessoa_cpf)
+            		Values (1,'01111','6666666666'),
+				 (2,'01111','6666666666'),
+				 (3,'01111','6666666666'),
+				 (4,'02222','7777777777'),
+				 (5,'02222','7777777777');
+            
+	
+		
+
+		     Insert into ano(cod,descricao,FK_turma_numero_turma)
+			 values(01,'2013','00'),
+			(02,'2014','01'),  
+			(03,'2015','02'),  
+			(04,'2016','03'),  
+			(05,'2017','04');
+
+
+  		  Insert Into ensina(fk_professor_cod_professor,fk_professor_fk_pessoa_cpf,fk_materia_cod)
+        		   Values ('01111','6666666666',1),
+				 ('01111','6666666666',2),
+				 ('01111','6666666666',3),
+				 ('02222','7777777777',4),
+				 ('02222','7777777777',5);
+
+
+		  Insert Into materia(cod,descricao)
+			    Values (1,'Matematica'),
+			           (2,'Fisica'),
+			           (3,'Cálculo'),
+				   (4,'História'),
+				   (5,'Filosofia');
+     
+	    		
+		 	
 		
 		
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
@@ -494,57 +553,17 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    FK_materia_cod int
 	);
 	
-	Insert Into pessoa (cpf,nome,data_de_nascimento)
- 	Values ('11111111', 'Guilherme Bork','12-12-2002'),
-        ('2222222222', 'Fabio', '09-09-2002'),
-        ('3333333333', 'Daniel', '07-08-2001'),
-        ('4444444444', 'Vanessa', '08-09-2003'),
-        ('5555555555', 'Kamila', '02-09-2000');
-
-	  Insert Into aluno (Matrícula, Nome_aluno, dat_nasc)
-	  Values ('11111111', 'Guilherme Bork','12-12-2002'),
-            ('2222222222', 'Fabio', '09-09-2002'),
-            ('3333333333', 'Daniel', '07-08-2001'),
-            ('4444444444', 'Vanessa', '08-09-2003'),
-            ('5555555555', 'Kamila', '02-09-2000');
-             
-           Insert Into Turma( nome_turma, numero_turma)
-           Values ('A', '00'),
-           ('B', '01'),
-           ('C', '02'),
-           ('D', '03'),
-           ('X', '04');
-            
-         Insert Into Professor(Matricula, Nome_prof, cpf_prof)
-            Values ('0111111111', 'Cesar', '111111111'),
-            ('0222222222', 'Morgana', '222222222'),
-            ('0333333333','Pedro', '3333333333'),
-            ('0444444444', 'Thais', '444444444'),
-            ('0555555555', 'Rick', '555555555');
-            
-            Insert Into Avaliacoes(Nome_avalicao, Dat_avalicao, Valor_avalicao)
-            Values ('prova1', '12-12-2018', 10),
-            ('Trab1', '12-12-2018', 25),
-            ('Prova2', '12-12-2018', 10),
-            ('Trab2', '12-12-2018', 5),
-            ('Trab3', '12-12-2018', 10);
-	    
-	    
-	     Insert into ano(cod,descricao,FK_turma_numero_turma)
-	         values(01,'2013','00'),
-   		(02,'2014','01'),  
-    		(03,'2015','02'),  
-    		(04,'2016','03'),  
-    		(05,'2017','04');
-		
-		
+	 Insert into complemento(cod_complemento,dec_complemento)
+		values('01','casa'),
+		('02','condominio'),    		
+		('03','apartamento');
+ 
 	Insert into pais(nome_pais,numero_pais)
 		values('BR',00),
    		('USA',01),  
     		('FRA',02),  
     		('CHI',03),  
     		('ARG',04);
-		
 		
 	Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
 		values('ES',00,00),
@@ -558,7 +577,96 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
    		('Vitoria',01,00),  
     		('Rio de Janeiro',02,01),  
     		('São Paulo',03,02),  
-    		('Cariacica',04,00);
+    		('Cariacica',04,00),
+		('Vila Velha',05,00);
+			
+	       
+	   Insert into bairro_(nome_bairro,numero_bairro ,fk_cidade_numero_cidade)
+		values('nova almeida',00,00),
+   		('jardim da penha',01,01),  
+    		('laranjeiras',02,00),  
+    		('Cobilândia',03,05),  
+    		('Jardim Camburi',04,01);	
+ 
+
+	   Insert into endereco_(numero,codigo,fk_complemento_cod_complemento,fk_bairro__numero_bairro)
+			values(01,'1111',01,00),
+			(02,'2222',01,01),  
+			(03,'3333',02,02),  
+			(04,'4444',03,03),  
+			(05,'5555',02,04);	
+ 
+	 Insert Into Turma( nome_turma, numero_turma)
+		   Values ('A', '00'),
+		   ('B', '01'),
+		   ('C', '02'),
+		   ('D', '03'),
+		   ('X', '04');
+
+	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo)
+ 	Values ('11111111', 'Guilherme Bork','12-12-2002','1111'),
+        ('2222222222', 'Fabio', '09-09-2002','3333'),
+        ('3333333333', 'Daniel', '07-08-2001','2222'),
+        ('4444444444', 'Vanessa', '08-09-2003','3333'),
+        ('5555555555', 'Kamila', '02-09-2000','4444'),
+	('6666666666', 'Paulo', '17-09-1985','5555'),
+        ('7777777777', 'Jeferson', '20-06-1976','5555');
+
+
+	  Insert Into aluno (matricula, fk_pessoa_cpf, fk_turma_numero_turma)
+	  Values ('00000', '11111111','00'),
+            ('11111', '2222222222', '00'),
+            ('22222', '3333333333', '02'),
+            ('33333', '4444444444', '03'),
+            ('55555', '5555555555', '01');
+             
+			
+         Insert Into professor(cod_professor, fk_pessoa_cpf)
+            Values ('01111', '6666666666'),
+           		 ('02222', '7777777777');
+           
+            
+            
+            Insert Into avaliacao(Nome_avaliacao, data_avaliacao, Valor_avaliacao,numero_avaliacao)
+            Values ('prova1', '12-12-2018', 10,1),
+            ('Trab1', '12-12-2018', 25,2),
+            ('Prova2', '13-12-2018', 10,3),
+            ('Trab2', '13-12-2018', 5,4),
+            ('Trab3', '13-12-2018', 10,5);
+	    
+
+            		Insert Into aplica(fk_avaliacao_numero_avaliacao,fk_professor_cod_professor,fk_professor_fk_pessoa_cpf)
+            		Values (1,'01111','6666666666'),
+				 (2,'01111','6666666666'),
+				 (3,'01111','6666666666'),
+				 (4,'02222','7777777777'),
+				 (5,'02222','7777777777');
+            
+	
+		
+
+		     Insert into ano(cod,descricao,FK_turma_numero_turma)
+			 values(01,'2013','00'),
+			(02,'2014','01'),  
+			(03,'2015','02'),  
+			(04,'2016','03'),  
+			(05,'2017','04');
+
+
+  		  Insert Into ensina(fk_professor_cod_professor,fk_professor_fk_pessoa_cpf,fk_materia_cod)
+        		   Values ('01111','6666666666',1),
+				 ('01111','6666666666',2),
+				 ('01111','6666666666',3),
+				 ('02222','7777777777',4),
+				 ('02222','7777777777',5);
+
+
+		  Insert Into materia(cod,descricao)
+			    Values (1,'Matematica'),
+			           (2,'Fisica'),
+			           (3,'Cálculo'),
+				   (4,'História'),
+				   (5,'Filosofia');
 		
 		
 #### 8.3 INCLUSÃO DO SCRIPT PARA EXCLUSÃO DE TABELAS EXISTENTES, CRIAÇÃO DE TABELA NOVAS E INSERÇÃO DOS DADOS
