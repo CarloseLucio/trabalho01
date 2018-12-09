@@ -464,7 +464,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
     		('03','02222','7777777777'),  
     		('04','02222','7777777777');	
 		
-	Insert into leciona(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
+	Insert into faz(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
 		values('00000','11111111','1','7'),
    		('11111','2222222222','1','8'),  
     		('22222','3333333333','1','10'),  
@@ -824,7 +824,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
     		('04','02222','7777777777');	
  	
 		
-	Insert into leciona(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
+	Insert into faz(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
 		values('00000','11111111','1','7'),
    		('11111','2222222222','1','8'),  
     		('22222','3333333333','1','10'),  
