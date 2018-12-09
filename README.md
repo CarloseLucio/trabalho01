@@ -107,7 +107,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 >## Marco de Entrega 01 em: (12/05/2018)<br>
 ### 6	MODELO LÓGICO<br>
 
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tey.png?raw=true "Modelo Logico")
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/logico.png?raw=true "Modelo Logico")
 
 
 
