@@ -48,7 +48,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 ### 5.MODELO CONCEITUAL<br>
         
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/gg.png?raw=true "Modelo Conceitual")
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/conceitual.png?raw=true "Modelo Conceitual")
     
         
     
