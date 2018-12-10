@@ -1370,8 +1370,25 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
     
 #### 9.5	ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
-
-
+	
+	delete from cidade where fk_estado_numero_estado='1'
+ ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/delete1.png?raw=true)	
+	
+	delete from estado where fk_pais_numero_pais='1'
+ ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/delete2.png?raw=true)
+	
+	delete from avaliacao where nome_avaliacao ='prova2'
+ ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/delete3.png?raw=true)	
+	
+	update avaliacao set nome_avaliacao='prova2' where nome_avaliacao = 'Trab3' 
+ ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/update1.png?raw=true)	
+	
+	update pessoa set nome='carla' where nome='Guilherme Bork'
+ ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/update2.png?raw=true)	
+	
+	update pessoa set sexo='F' where nome='carla'
+ ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/update3.png?raw=true)
+	
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
         a) Uma junção que envolva todas as tabelas possuindo no mínimo 3 registros no resultado
         b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
