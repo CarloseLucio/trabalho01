@@ -1234,6 +1234,63 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	   Select * from cidade
             
    ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20cidade.png?raw=true)
+   
+           
+	   Select * from complemento
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20complemento.png?raw=true)
+           
+	   Select * from endereco_
+            
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20endereco_.png?raw=true)
+           
+	   Select * from ensina
+            
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20ensina.png?raw=true)
+   
+           
+	   Select * from estado
+            
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20estado.png?raw=true)
+           
+	   Select * from faz
+            
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20faz.png?raw=true)
+           
+	   Select * from frequenta
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20frequenta.png?raw=true)
+   
+   	
+	   Select * from leciona
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20leciona.png?raw=true)
+   
+	   Select * from logadouro
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20logadouro.png?raw=true)
+   
+	   Select * from materia
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20materia.png?raw=true)
+   	   
+	     Select * from pais
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20pais.png?raw=true)
+   
+    	    Select * from pessoa
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20pessoa.png?raw=true)
+   
+   	    Select * from professor
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20professor.png?raw=true)
+   
+    	    Select * from turma
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20turma.png?raw=true)
+   
+   
            
 	   
            
