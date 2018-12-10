@@ -192,6 +192,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    cpf varchar(100) PRIMARY KEY,
 	    data_de_nascimento date,
 	    FK_endereco__codigo varChar(100)
+	    sexo char
 	);
 
 	CREATE TABLE materia (
@@ -377,16 +378,14 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 		   ('D', '03'),
 		   ('X', '04');
 
-
-	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo)
-		Values ('11111111', 'Guilherme Bork','12-12-2002','1111'),
-		('2222222222', 'Fabio', '09-09-2002','3333'),
-		('3333333333', 'Daniel', '07-08-2001','2222'),
-		('4444444444', 'Vanessa', '08-09-2003','3333'),
-		('5555555555', 'Kamila', '02-09-2000','4444'),
-		('6666666666', 'Paulo', '17-09-1985','5555'),
-		('7777777777', 'Jeferson', '20-06-1976','5555');
-
+	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo,sexo)
+			Values ('11111111', 'Guilherme Bork','12-12-2002','1111','M'),
+			('2222222222', 'Fabio', '09-09-2002','3333','M'),
+			('3333333333', 'Daniel', '07-08-2001','2222','M'),
+			('4444444444', 'Vanessa', '08-09-2003','3333','F'),
+			('5555555555', 'Kamila', '02-09-2000','4444','F'),
+			('6666666666', 'Paulo', '17-09-1985','5555','M'),
+			('7777777777', 'Jeferson', '20-06-1976','5555','M');
 
 
 
@@ -554,6 +553,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    cpf varchar(100) PRIMARY KEY,
 	    data_de_nascimento date,
 	    FK_endereco__codigo varChar(100)
+	    sexo char
 	);
 
 	CREATE TABLE materia (
@@ -736,15 +736,14 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 		   ('D', '03'),
 		   ('X', '04');
 
-
-	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo)
-		Values ('11111111', 'Guilherme Bork','12-12-2002','1111'),
-		('2222222222', 'Fabio', '09-09-2002','3333'),
-		('3333333333', 'Daniel', '07-08-2001','2222'),
-		('4444444444', 'Vanessa', '08-09-2003','3333'),
-		('5555555555', 'Kamila', '02-09-2000','4444'),
-		('6666666666', 'Paulo', '17-09-1985','5555'),
-		('7777777777', 'Jeferson', '20-06-1976','5555');
+	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo,sexo)
+			Values ('11111111', 'Guilherme Bork','12-12-2002','1111','M'),
+			('2222222222', 'Fabio', '09-09-2002','3333','M'),
+			('3333333333', 'Daniel', '07-08-2001','2222','M'),
+			('4444444444', 'Vanessa', '08-09-2003','3333','F'),
+			('5555555555', 'Kamila', '02-09-2000','4444','F'),
+			('6666666666', 'Paulo', '17-09-1985','5555','M'),
+			('7777777777', 'Jeferson', '20-06-1976','5555','M');
 
 
 
@@ -1032,16 +1031,23 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    data_de_nascimento date,
 	    FK_endereco__codigo varChar(100)
 	);
+	CREATE TABLE pessoa (
+	    nome varchar(100),
+	    cpf varchar(100) PRIMARY KEY,
+	    data_de_nascimento date,
+	    FK_endereco__codigo varChar(100)
+	    sexo char
+	);
+
 	
-	
-	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo)
-		Values ('11111111', 'Guilherme Bork','12-12-2002','1111'),
-		('2222222222', 'Fabio', '09-09-2002','3333'),
-		('3333333333', 'Daniel', '07-08-2001','2222'),
-		('4444444444', 'Vanessa', '08-09-2003','3333'),
-		('5555555555', 'Kamila', '02-09-2000','4444'),
-		('6666666666', 'Paulo', '17-09-1985','5555'),
-		('7777777777', 'Jeferson', '20-06-1976','5555');
+	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo,sexo)
+		Values ('11111111', 'Guilherme Bork','12-12-2002','1111','M'),
+		('2222222222', 'Fabio', '09-09-2002','3333','M'),
+		('3333333333', 'Daniel', '07-08-2001','2222','M'),
+		('4444444444', 'Vanessa', '08-09-2003','3333','F'),
+		('5555555555', 'Kamila', '02-09-2000','4444','F'),
+		('6666666666', 'Paulo', '17-09-1985','5555','M'),
+		('7777777777', 'Jeferson', '20-06-1976','5555','M');
 		
 	drop table materia;
 	
