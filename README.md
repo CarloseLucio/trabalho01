@@ -107,7 +107,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 >## Marco de Entrega 01 em: (12/05/2018)<br>
 ### 6	MODELO LÓGICO<br>
 
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/logico.png?raw=true "Modelo Logico")
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/Sem%20t%C3%ADtulo.png?raw=true "Modelo Logico")
 
 
 
@@ -1070,6 +1070,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    data_de_nascimento date,
 	    FK_endereco__codigo varChar(100)
 	);
+	
 	CREATE TABLE pessoa (
 	    nome varchar(100),
 	    cpf varchar(100) PRIMARY KEY,
@@ -1095,12 +1096,13 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    descricao varChar(100)
 	);
 	
+
 	Insert Into materia(cod,descricao)
 	Values (1,'Matematica'),
-	(2,'Fisica'),
-	(3,'Cálculo'),
-	(4,'História'),
-	(5,'Filosofia');
+	(2,'Historia'),
+
+
+	
 	
 	drop table leciona;
 
@@ -1143,12 +1145,13 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	);
 		
 	Insert into faz(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
-		values('00000','11111111','1','7'),
-   		('11111','2222222222','1','8'),  
-    		('22222','3333333333','1','10'),  
-    		('33333','4444444444','1','5.5'),  
-    		('44444','5555555555','1','6.5');	
-	
+	values('00000','11111111','1','7'),
+		('11111','2222222222','1','8'),  
+		('22222','3333333333','1','10'),  
+		('33333','4444444444','1','5.5'),  
+		('55555','5555555555','1','6.5');	
+
+		
 	
 	drop table ensina;
 
@@ -1160,10 +1163,31 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	
 	Insert Into ensina(fk_professor_cod_professor,fk_professor_fk_pessoa_cpf,fk_materia_cod)
 	Values ('01111','6666666666',1),
-	('01111','6666666666',2),
-	('01111','6666666666',3),
-	('02222','7777777777',4),
-	('02222','7777777777',5);
+	('02222','7777777777',2),
+	
+	
+	
+	
+	drop table frequenta;
+	
+	
+		CREATE TABLE frequenta (
+		    FK_aluno_matricula varChar(100),
+		    FK_aluno_FK_pessoa_cpf varchar(100),
+		    FK_materia_cod int,
+		    data date,
+		    presenca char
+		);
+
+	
+
+		insert into frequenta(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf,fk_materia_cod,data,presenca)
+		values('00000','11111111',1,'03-03-2017','.'),
+		('11111','2222222222',1,'03-03-2017','.'),
+		('22222','3333333333',1,'03-03-2017','.'),
+		('33333','4444444444',1,'03-03-2017','.'),
+		('55555','5555555555',1,'03-03-2017','F');
+
 
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
