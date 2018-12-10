@@ -1390,8 +1390,23 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
  ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/update3.png?raw=true)
 	
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
-        a) Uma junção que envolva todas as tabelas possuindo no mínimo 3 registros no resultado
-        b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
+       		     select p.nome,
+                            a.nome_avaliacao,
+                            a.valor_avaliacao,
+                            f.nota,
+                            m.descricao as materia
+			    from faz f 
+                            inner join avaliacao a
+                            on (f.fk_avaliacao_numero_avaliacao = a.numero_avaliacao)inner join aluno al
+			    on(f.fk_aluno_matricula = al.matricula)inner join pessoa p 
+			    on(p.cpf = al.fk_pessoa_cpf )inner join aplica ap
+                            on(f.fk_avaliacao_numero_avaliacao = ap.fk_avaliacao_numero_avaliacao)inner join ensina e
+                            on(ap.fk_professor_cod_professor = e.fk_professor_cod_professor) inner join materia m 
+                            on(e.fk_materia_cod = m.cod)
+                            where f.nota >= a.valor_avaliacao *0.6
+			    order by nota desc
+	
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/group1.png?raw=true)
         
 
 ## Marco de Entrega 02 em: (16/06/2018)<br>
