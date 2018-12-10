@@ -1297,25 +1297,22 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
    
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
-            Select * from Aluno
-            Where dat_nasc > '12-12-2000'
-
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2%20-%201.png)	    
-	  
-            Select * from Aluno
-            Where dat_nasc < '12-12-2000'
-
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2%20-%202.png)
-
-            Select * from Professor
-       	    Where matricula = '0111111111'
-
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2-3.png)
-           
-            Select * from Turma
-            Where data_criacao >= '01-01-2017'
             
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/9.2-4.png)	    
+	    Select * from pessoa  Where data_de_nascimento > '12-12-2000'
+
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/where%20nascimento.png?raw=true)	    
+	  
+             Select * from pessoa  Where sexo = 'F'
+
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/where%20sexo.png?raw=true)
+
+           Select * from aluno  where fk_turma_numero_turma = '00'
+
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/where%20sexo%20turma.png?raw=true)
+           
+            Select * from ano Where descricao >'2015'
+            
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/2015.png?raw=true)	    
 	    
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
         Select * from Aluno
