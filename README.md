@@ -114,6 +114,8 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 ### 7	MODELO FÍSICO<br>
       
 
+		/* Lógico_1: */
+
 	CREATE TABLE aluno (
 	    matricula varChar(100),
 	    FK_pessoa_cpf varchar(100),
@@ -191,8 +193,8 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    nome varchar(100),
 	    cpf varchar(100) PRIMARY KEY,
 	    data_de_nascimento date,
+	    sexo char,
 	    FK_endereco__codigo varChar(100)
-	    sexo char
 	);
 
 	CREATE TABLE materia (
@@ -223,6 +225,14 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	    FK_professor_cod_professor varChar(100),
 	    FK_professor_FK_pessoa_cpf varchar(100),
 	    FK_materia_cod int
+	);
+
+	CREATE TABLE frequenta (
+	    FK_aluno_matricula varChar(100),
+	    FK_aluno_FK_pessoa_cpf varchar(100),
+	    FK_materia_cod int,
+	    data date,
+	    presenca char
 	);
 
 	ALTER TABLE aluno ADD CONSTRAINT FK_aluno_1
@@ -313,522 +323,551 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 	ALTER TABLE ensina ADD CONSTRAINT FK_ensina_0
 	    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
 	    REFERENCES professor (cod_professor, FK_pessoa_cpf)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+	    ON DELETE SET NULL ON UPDATE CASCADE;
 
 	ALTER TABLE ensina ADD CONSTRAINT FK_ensina_1
 	    FOREIGN KEY (FK_materia_cod)
 	    REFERENCES materia (cod)
 	    ON DELETE SET NULL ON UPDATE CASCADE;
+
+	ALTER TABLE frequenta ADD CONSTRAINT FK_frequenta_0
+	    FOREIGN KEY (FK_aluno_matricula, FK_aluno_FK_pessoa_cpf)
+	    REFERENCES aluno (matricula, FK_pessoa_cpf)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+	ALTER TABLE frequenta ADD CONSTRAINT FK_frequenta_1
+	    FOREIGN KEY (FK_materia_cod)
+	    REFERENCES materia (cod)
+	    ON DELETE RESTRICT ON UPDATE RESTRICT;
         
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 #### 8.1 DETALHAMENTO DAS INFORMAÇÕES
          
-	 Insert into complemento(cod_complemento,dec_complemento)
-		values('01','casa'),
-		('02','condominio'),    		
-		('03','apartamento');
- 
 
- 
-	Insert into pais(nome_pais,numero_pais)
-		values('BR',00),
-   		('USA',01),  
-    		('FRA',02),  
-    		('CHI',03),  
-    		('ARG',04);
-		
-	Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
-		values('ES',00,00),
-   			('RJ',01,00),  
-    		('SP',02,00),  
-    		('NY',03,01),  
-    		('RO',04,00);
-	    
-	   Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
-		values('Serra',00,00),
-   			('Vitoria',01,00),  
-    		('Rio de Janeiro',02,01),  
-    		('São Paulo',03,02),  
-    		('Cariacica',04,00),
-			('Vila Velha',05,00);
-			
-	       
-	   Insert into bairro_(nome_bairro,numero_bairro ,fk_cidade_numero_cidade)
-		values('nova almeida',00,00),
-   		('jardim da penha',01,01),  
-    		('laranjeiras',02,00),  
-    		('Cobilândia',03,05),  
-    		('Jardim Camburi',04,01);	
- 
- 
- 
-
-	   Insert into endereco_(numero,codigo,fk_complemento_cod_complemento,fk_bairro__numero_bairro)
-			values(01,'1111',01,00),
-			(02,'2222',01,01),  
-			(03,'3333',02,02),  
-			(04,'4444',03,03),  
-			(05,'5555',02,04);	
-
-
-	 Insert Into Turma( nome_turma, numero_turma)
-		   Values ('A', '00'),
-		   ('B', '01'),
-		   ('C', '02'),
-		   ('D', '03'),
-		   ('X', '04');
-
-	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo,sexo)
-			Values ('11111111', 'Guilherme Bork','12-12-2002','1111','M'),
-			('2222222222', 'Fabio', '09-09-2002','3333','M'),
-			('3333333333', 'Daniel', '07-08-2001','2222','M'),
-			('4444444444', 'Vanessa', '08-09-2003','3333','F'),
-			('5555555555', 'Kamila', '02-09-2000','4444','F'),
-			('6666666666', 'Paulo', '17-09-1985','5555','M'),
-			('7777777777', 'Jeferson', '20-06-1976','5555','M');
+		Insert into complemento(cod_complemento,dec_complemento)
+			values('01','casa'),
+			('02','condominio'),    		
+			('03','apartamento');
 
 
 
-	Insert into logadouro(cod,tipo,nome,fk_endereco__codigo)
-	values(01,'Avenida','belo horizonte','1111'),
-	(02,'Avenida','Dante Michelini','5555'),
-	(03,'Rua' ,'Albérico Bitencourt','4444'),
-	(04,'Rua','Boulevard Antilhas','3333'),
-	(05,'Avenida','Abido Saad','2222');
+		Insert into pais(nome_pais,numero_pais)
+			values('BR',00),
+			('USA',01),  
+				('FRA',02),  
+				('CHI',03),  
+				('ARG',04);
+
+		Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
+			values('ES',00,00),
+				('RJ',01,00),  
+				('SP',02,00),  
+				('NY',03,01),  
+				('RO',04,00);
+
+		   Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
+			values('Serra',00,00),
+				('Vitoria',01,00),  
+				('Rio de Janeiro',02,01),  
+				('São Paulo',03,02),  
+				('Cariacica',04,00),
+				('Vila Velha',05,00);
 
 
-
-	Insert Into aluno (matricula, fk_pessoa_cpf, fk_turma_numero_turma)
-	Values ('00000', '11111111','00'),
-	('11111', '2222222222', '00'),
-	('22222', '3333333333', '02'),
-	('33333', '4444444444', '03'),
-	('55555', '5555555555', '01');
+		   Insert into bairro_(nome_bairro,numero_bairro ,fk_cidade_numero_cidade)
+			values('nova almeida',00,00),
+			('jardim da penha',01,01),  
+				('laranjeiras',02,00),  
+				('Cobilândia',03,05),  
+				('Jardim Camburi',04,01);	
 
 
 
 
-	Insert Into professor(cod_professor, fk_pessoa_cpf)
-	Values ('01111', '6666666666'),
-	('02222', '7777777777');
+		   Insert into endereco_(numero,codigo,fk_complemento_cod_complemento,fk_bairro__numero_bairro)
+				values(01,'1111',01,00),
+				(02,'2222',01,01),  
+				(03,'3333',02,02),  
+				(04,'4444',03,03),  
+				(05,'5555',02,04);	
+
+
+		 Insert Into Turma( nome_turma, numero_turma)
+			   Values ('A', '00'),
+			   ('B', '01'),
+			   ('C', '02'),
+			   ('D', '03'),
+			   ('X', '04');
+
+		Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo,sexo)
+				Values ('11111111', 'Guilherme Bork','12-12-2002','1111','M'),
+				('2222222222', 'Fabio', '09-09-2002','3333','M'),
+				('3333333333', 'Daniel', '07-08-2001','2222','M'),
+				('4444444444', 'Vanessa', '08-09-2003','3333','F'),
+				('5555555555', 'Kamila', '02-09-2000','4444','F'),
+				('6666666666', 'Paulo', '17-09-1985','5555','M'),
+				('7777777777', 'Jeferson', '20-06-1976','5555','M');
 
 
 
-	Insert Into avaliacao(Nome_avaliacao, data_avaliacao, Valor_avaliacao,numero_avaliacao)
-	Values ('prova1', '12-12-2018', 10,1),
-	('Trab1', '12-12-2018', 25,2),
-	('Prova2', '13-12-2018', 10,3),
-	('Trab2', '13-12-2018', 5,4),
-	('Trab3', '13-12-2018', 10,5);
+		Insert into logadouro(cod,tipo,nome,fk_endereco__codigo)
+		values(01,'Avenida','belo horizonte','1111'),
+		(02,'Avenida','Dante Michelini','5555'),
+		(03,'Rua' ,'Albérico Bitencourt','4444'),
+		(04,'Rua','Boulevard Antilhas','3333'),
+		(05,'Avenida','Abido Saad','2222');
 
-
-	Insert Into aplica(fk_avaliacao_numero_avaliacao,fk_professor_cod_professor,fk_professor_fk_pessoa_cpf)
-	Values (1,'01111','6666666666'),
-	(2,'01111','6666666666'),
-	(3,'01111','6666666666'),
-	(4,'02222','7777777777'),
-	(5,'02222','7777777777');
-
+		Insert Into aluno (matricula, fk_pessoa_cpf, fk_turma_numero_turma)
+		Values ('00000', '11111111','00'),
+		('11111', '2222222222', '00'),
+		('22222', '3333333333', '02'),
+		('33333', '4444444444', '03'),
+		('55555', '5555555555', '01');
 
 
 
-	Insert into ano(cod,descricao,FK_turma_numero_turma)
-	values(01,'2013','00'),
-	(02,'2014','01'),
-	(03,'2015','02'),
-	(04,'2016','03'),
-	(05,'2017','04');
+		Insert Into professor(cod_professor, fk_pessoa_cpf)
+		Values ('01111', '6666666666'),
+		('02222', '7777777777');
 
 
-	Insert Into ensina(fk_professor_cod_professor,fk_professor_fk_pessoa_cpf,fk_materia_cod)
-	Values ('01111','6666666666',1),
-	('01111','6666666666',2),
-	('01111','6666666666',3),
-	('02222','7777777777',4),
-	('02222','7777777777',5);
+
+		Insert Into avaliacao(Nome_avaliacao, data_avaliacao, Valor_avaliacao,numero_avaliacao)
+		Values ('prova1', '12-12-2018', 10,1),
+		('Trab1', '12-12-2018', 25,2),
+		('Prova2', '13-12-2018', 10,3),
+		('Trab2', '13-12-2018', 5,4),
+		('Trab3', '13-12-2018', 10,5);
 
 
-	Insert Into materia(cod,descricao)
-	Values (1,'Matematica'),
-	(2,'Fisica'),
-	(3,'Cálculo'),
-	(4,'História'),
-	(5,'Filosofia');
+		Insert Into aplica(fk_avaliacao_numero_avaliacao,fk_professor_cod_professor,fk_professor_fk_pessoa_cpf)
+		Values (1,'01111','6666666666'),
+		(2,'01111','6666666666'),
+		(3,'01111','6666666666'),
+		(4,'02222','7777777777'),
+		(5,'02222','7777777777');
 
-	
-	Insert into leciona(fk_turma_numero_turma,fk_professor_cod_professor ,fk_professor_fk_pessoa_cpf)
-		values('00','01111','6666666666'),
-   		('01','01111','6666666666'),  
-    		('02','01111','6666666666'),  
-    		('03','02222','7777777777'),  
-    		('04','02222','7777777777');	
-		
-	Insert into faz(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
-		values('00000','11111111','1','7'),
-   		('11111','2222222222','1','8'),  
-    		('22222','3333333333','1','10'),  
-    		('33333','4444444444','1','5.5'),  
-    		('44444','5555555555','1','6.5');	
- 
- 
+
+
+
+		Insert into ano(cod,descricao,FK_turma_numero_turma)
+		values(01,'2013','00'),
+		(02,'2014','01'),
+		(03,'2015','02'),
+		(04,'2016','03'),
+		(05,'2017','04');
+
+
+		Insert Into ensina(fk_professor_cod_professor,fk_professor_fk_pessoa_cpf,fk_materia_cod)
+		Values ('01111','6666666666',1),
+		('02222','7777777777',2),
+
+
+
+		Insert Into materia(cod,descricao)
+		Values (1,'Matematica'),
+		(2,'Historia'),
+
+
+		Insert into leciona(fk_turma_numero_turma,fk_professor_cod_professor ,fk_professor_fk_pessoa_cpf)
+			values('00','01111','6666666666'),
+				('01','01111','6666666666'),  
+				('02','01111','6666666666'),  
+				('03','02222','7777777777'),  
+				('04','02222','7777777777');	
+
+		Insert into faz(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
+			values('00000','11111111','1','7'),
+				('11111','2222222222','1','8'),  
+				('22222','3333333333','1','10'),  
+				('33333','4444444444','1','5.5'),  
+				('55555','5555555555','1','6.5');	
+
+
+		insert into frequenta(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf,fk_materia_cod,data,presenca)
+		values('00000','11111111',1,'03-03-2017','.'),
+		('11111','2222222222',1,'03-03-2017','.'),
+		('22222','3333333333',1,'03-03-2017','.'),
+		('33333','4444444444',1,'03-03-2017','.'),
+		('55555','5555555555',1,'03-03-2017','F');
+
+
 
 #### 8.2 INCLUSÃO DO SCRIPT PARA CRIAÇÃO DE TABELA E INSERÇÃO DOS DADOS
         
+		
 
-	CREATE TABLE aluno (
-	    matricula varChar(100),
-	    FK_pessoa_cpf varchar(100),
-	    FK_turma_numero_turma varChar(100),
-	    PRIMARY KEY (matricula, FK_pessoa_cpf)
-	);
+		CREATE TABLE aluno (
+		    matricula varChar(100),
+		    FK_pessoa_cpf varchar(100),
+		    FK_turma_numero_turma varChar(100),
+		    PRIMARY KEY (matricula, FK_pessoa_cpf)
+		);
 
-	CREATE TABLE turma (
-	    numero_turma varChar(100) PRIMARY KEY,
-	    nome_turma varChar(100)
-	);
+		CREATE TABLE turma (
+		    numero_turma varChar(100) PRIMARY KEY,
+		    nome_turma varChar(100)
+		);
 
-	CREATE TABLE professor (
-	    cod_professor varChar(100),
-	    FK_pessoa_cpf varchar(100),
-	    PRIMARY KEY (cod_professor, FK_pessoa_cpf)
-	);
+		CREATE TABLE professor (
+		    cod_professor varChar(100),
+		    FK_pessoa_cpf varchar(100),
+		    PRIMARY KEY (cod_professor, FK_pessoa_cpf)
+		);
 
-	CREATE TABLE avaliacao (
-	    valor_avaliacao float,
-	    data_avaliacao date,
-	    numero_avaliacao int PRIMARY KEY,
-	    nome_avaliacao varChar(100)
-	);
+		CREATE TABLE avaliacao (
+		    valor_avaliacao float,
+		    data_avaliacao date,
+		    numero_avaliacao int PRIMARY KEY,
+		    nome_avaliacao varChar(100)
+		);
 
-	CREATE TABLE endereco_ (
-	    numero int,
-	    codigo varChar(100) PRIMARY KEY,
-	    FK_complemento_cod_complemento int,
-	    FK_bairro__numero_bairro int
-	);
+		CREATE TABLE endereco_ (
+		    numero int,
+		    codigo varChar(100) PRIMARY KEY,
+		    FK_complemento_cod_complemento int,
+		    FK_bairro__numero_bairro int
+		);
 
-	CREATE TABLE bairro_ (
-	    nome_bairro varChar(100),
-	    numero_bairro int PRIMARY KEY,
-	    FK_cidade_numero_cidade int
-	);
+		CREATE TABLE bairro_ (
+		    nome_bairro varChar(100),
+		    numero_bairro int PRIMARY KEY,
+		    FK_cidade_numero_cidade int
+		);
 
-	CREATE TABLE cidade (
-	    nome_cidade varChar(100),
-	    numero_cidade int PRIMARY KEY,
-	    FK_estado_numero_estado int
-	);
+		CREATE TABLE cidade (
+		    nome_cidade varChar(100),
+		    numero_cidade int PRIMARY KEY,
+		    FK_estado_numero_estado int
+		);
 
-	CREATE TABLE pais (
-	    nome_pais varChar(100),
-	    numero_pais varChar(100) PRIMARY KEY
-	);
+		CREATE TABLE pais (
+		    nome_pais varChar(100),
+		    numero_pais varChar(100) PRIMARY KEY
+		);
 
-	CREATE TABLE estado (
-	    nome_estado varChar(100),
-	    numero_estado int PRIMARY KEY,
-	    FK_pais_numero_pais varChar(100)
-	);
+		CREATE TABLE estado (
+		    nome_estado varChar(100),
+		    numero_estado int PRIMARY KEY,
+		    FK_pais_numero_pais varChar(100)
+		);
 
-	CREATE TABLE complemento (
-	    cod_complemento int PRIMARY KEY,
-	    dec_complemento varChar(100)
-	);
+		CREATE TABLE complemento (
+		    cod_complemento int PRIMARY KEY,
+		    dec_complemento varChar(100)
+		);
 
-	CREATE TABLE logadouro (
-	    cod Serial PRIMARY KEY,
-	    tipo varChar(100),
-	    nome varChar(200),
-	    FK_endereco__codigo varChar(100)
-	);
+		CREATE TABLE logadouro (
+		    cod Serial PRIMARY KEY,
+		    tipo varChar(100),
+		    nome varChar(200),
+		    FK_endereco__codigo varChar(100)
+		);
 
-	CREATE TABLE Ano (
-	    cod varChar(200) PRIMARY KEY,
-	    descricao varChar(100),
-	    FK_turma_numero_turma varChar(100)
-	);
+		CREATE TABLE Ano (
+		    cod varChar(200) PRIMARY KEY,
+		    descricao varChar(100),
+		    FK_turma_numero_turma varChar(100)
+		);
 
-	CREATE TABLE pessoa (
-	    nome varchar(100),
-	    cpf varchar(100) PRIMARY KEY,
-	    data_de_nascimento date,
-	    FK_endereco__codigo varChar(100)
-	    sexo char
-	);
+		CREATE TABLE pessoa (
+		    nome varchar(100),
+		    cpf varchar(100) PRIMARY KEY,
+		    data_de_nascimento date,
+		    sexo char,
+		    FK_endereco__codigo varChar(100)
+		);
 
-	CREATE TABLE materia (
-	    cod int PRIMARY KEY,
-	    descricao varChar(100)
-	);
+		CREATE TABLE materia (
+		    cod int PRIMARY KEY,
+		    descricao varChar(100)
+		);
 
-	CREATE TABLE leciona (
-	    FK_turma_numero_turma varChar(100),
-	    FK_professor_cod_professor varChar(100),
-	    FK_professor_FK_pessoa_cpf varchar(100)
-	);
+		CREATE TABLE leciona (
+		    FK_turma_numero_turma varChar(100),
+		    FK_professor_cod_professor varChar(100),
+		    FK_professor_FK_pessoa_cpf varchar(100)
+		);
 
-	CREATE TABLE aplica (
-	    FK_avaliacao_numero_avaliacao int,
-	    FK_professor_cod_professor varChar(100),
-	    FK_professor_FK_pessoa_cpf varchar(100)
-	);
+		CREATE TABLE aplica (
+		    FK_avaliacao_numero_avaliacao int,
+		    FK_professor_cod_professor varChar(100),
+		    FK_professor_FK_pessoa_cpf varchar(100)
+		);
 
-	CREATE TABLE faz (
-	    FK_aluno_matricula varChar(100),
-	    FK_aluno_FK_pessoa_cpf varchar(100),
-	    FK_avaliacao_numero_avaliacao int,
-	    nota float
-	);
+		CREATE TABLE faz (
+		    FK_aluno_matricula varChar(100),
+		    FK_aluno_FK_pessoa_cpf varchar(100),
+		    FK_avaliacao_numero_avaliacao int,
+		    nota float
+		);
 
-	CREATE TABLE ensina (
-	    FK_professor_cod_professor varChar(100),
-	    FK_professor_FK_pessoa_cpf varchar(100),
-	    FK_materia_cod int
-	);
+		CREATE TABLE ensina (
+		    FK_professor_cod_professor varChar(100),
+		    FK_professor_FK_pessoa_cpf varchar(100),
+		    FK_materia_cod int
+		);
 
-	ALTER TABLE aluno ADD CONSTRAINT FK_aluno_1
-	    FOREIGN KEY (FK_pessoa_cpf)
-	    REFERENCES pessoa (cpf)
-	    ON DELETE CASCADE ON UPDATE CASCADE;
+		CREATE TABLE frequenta (
+		    FK_aluno_matricula varChar(100),
+		    FK_aluno_FK_pessoa_cpf varchar(100),
+		    FK_materia_cod int,
+		    data date,
+		    presenca char
+		);
 
-	ALTER TABLE aluno ADD CONSTRAINT FK_aluno_2
-	    FOREIGN KEY (FK_turma_numero_turma)
-	    REFERENCES turma (numero_turma)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE aluno ADD CONSTRAINT FK_aluno_1
+		    FOREIGN KEY (FK_pessoa_cpf)
+		    REFERENCES pessoa (cpf)
+		    ON DELETE CASCADE ON UPDATE CASCADE;
 
-	ALTER TABLE professor ADD CONSTRAINT FK_professor_1
-	    FOREIGN KEY (FK_pessoa_cpf)
-	    REFERENCES pessoa (cpf)
-	    ON DELETE CASCADE ON UPDATE CASCADE;
+		ALTER TABLE aluno ADD CONSTRAINT FK_aluno_2
+		    FOREIGN KEY (FK_turma_numero_turma)
+		    REFERENCES turma (numero_turma)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE endereco_ ADD CONSTRAINT FK_endereco__1
-	    FOREIGN KEY (FK_complemento_cod_complemento)
-	    REFERENCES complemento (cod_complemento)
-	    ON DELETE CASCADE ON UPDATE CASCADE;
+		ALTER TABLE professor ADD CONSTRAINT FK_professor_1
+		    FOREIGN KEY (FK_pessoa_cpf)
+		    REFERENCES pessoa (cpf)
+		    ON DELETE CASCADE ON UPDATE CASCADE;
 
-	ALTER TABLE endereco_ ADD CONSTRAINT FK_endereco__2
-	    FOREIGN KEY (FK_bairro__numero_bairro)
-	    REFERENCES bairro_ (numero_bairro)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE endereco_ ADD CONSTRAINT FK_endereco__1
+		    FOREIGN KEY (FK_complemento_cod_complemento)
+		    REFERENCES complemento (cod_complemento)
+		    ON DELETE CASCADE ON UPDATE CASCADE;
 
-	ALTER TABLE bairro_ ADD CONSTRAINT FK_bairro__1
-	    FOREIGN KEY (FK_cidade_numero_cidade)
-	    REFERENCES cidade (numero_cidade)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE endereco_ ADD CONSTRAINT FK_endereco__2
+		    FOREIGN KEY (FK_bairro__numero_bairro)
+		    REFERENCES bairro_ (numero_bairro)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE cidade ADD CONSTRAINT FK_cidade_1
-	    FOREIGN KEY (FK_estado_numero_estado)
-	    REFERENCES estado (numero_estado)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE bairro_ ADD CONSTRAINT FK_bairro__1
+		    FOREIGN KEY (FK_cidade_numero_cidade)
+		    REFERENCES cidade (numero_cidade)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE estado ADD CONSTRAINT FK_estado_1
-	    FOREIGN KEY (FK_pais_numero_pais)
-	    REFERENCES pais (numero_pais)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE cidade ADD CONSTRAINT FK_cidade_1
+		    FOREIGN KEY (FK_estado_numero_estado)
+		    REFERENCES estado (numero_estado)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE logadouro ADD CONSTRAINT FK_logadouro_1
-	    FOREIGN KEY (FK_endereco__codigo)
-	    REFERENCES endereco_ (codigo)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE estado ADD CONSTRAINT FK_estado_1
+		    FOREIGN KEY (FK_pais_numero_pais)
+		    REFERENCES pais (numero_pais)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE Ano ADD CONSTRAINT FK_Ano_1
-	    FOREIGN KEY (FK_turma_numero_turma)
-	    REFERENCES turma (numero_turma)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE logadouro ADD CONSTRAINT FK_logadouro_1
+		    FOREIGN KEY (FK_endereco__codigo)
+		    REFERENCES endereco_ (codigo)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE pessoa ADD CONSTRAINT FK_pessoa_1
-	    FOREIGN KEY (FK_endereco__codigo)
-	    REFERENCES endereco_ (codigo)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE Ano ADD CONSTRAINT FK_Ano_1
+		    FOREIGN KEY (FK_turma_numero_turma)
+		    REFERENCES turma (numero_turma)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE leciona ADD CONSTRAINT FK_leciona_0
-	    FOREIGN KEY (FK_turma_numero_turma)
-	    REFERENCES turma (numero_turma)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE pessoa ADD CONSTRAINT FK_pessoa_1
+		    FOREIGN KEY (FK_endereco__codigo)
+		    REFERENCES endereco_ (codigo)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE leciona ADD CONSTRAINT FK_leciona_1
-	    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
-	    REFERENCES professor (cod_professor, FK_pessoa_cpf)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE leciona ADD CONSTRAINT FK_leciona_0
+		    FOREIGN KEY (FK_turma_numero_turma)
+		    REFERENCES turma (numero_turma)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE aplica ADD CONSTRAINT FK_aplica_0
-	    FOREIGN KEY (FK_avaliacao_numero_avaliacao)
-	    REFERENCES avaliacao (numero_avaliacao)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE leciona ADD CONSTRAINT FK_leciona_1
+		    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
+		    REFERENCES professor (cod_professor, FK_pessoa_cpf)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE aplica ADD CONSTRAINT FK_aplica_1
-	    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
-	    REFERENCES professor (cod_professor, FK_pessoa_cpf)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE aplica ADD CONSTRAINT FK_aplica_0
+		    FOREIGN KEY (FK_avaliacao_numero_avaliacao)
+		    REFERENCES avaliacao (numero_avaliacao)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE faz ADD CONSTRAINT FK_faz_0
-	    FOREIGN KEY (FK_aluno_matricula, FK_aluno_FK_pessoa_cpf)
-	    REFERENCES aluno (matricula, FK_pessoa_cpf)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE aplica ADD CONSTRAINT FK_aplica_1
+		    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
+		    REFERENCES professor (cod_professor, FK_pessoa_cpf)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE faz ADD CONSTRAINT FK_faz_1
-	    FOREIGN KEY (FK_avaliacao_numero_avaliacao)
-	    REFERENCES avaliacao (numero_avaliacao)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE faz ADD CONSTRAINT FK_faz_0
+		    FOREIGN KEY (FK_aluno_matricula, FK_aluno_FK_pessoa_cpf)
+		    REFERENCES aluno (matricula, FK_pessoa_cpf)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE ensina ADD CONSTRAINT FK_ensina_0
-	    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
-	    REFERENCES professor (cod_professor, FK_pessoa_cpf)
-	    ON DELETE RESTRICT ON UPDATE RESTRICT;
+		ALTER TABLE faz ADD CONSTRAINT FK_faz_1
+		    FOREIGN KEY (FK_avaliacao_numero_avaliacao)
+		    REFERENCES avaliacao (numero_avaliacao)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 
-	ALTER TABLE ensina ADD CONSTRAINT FK_ensina_1
-	    FOREIGN KEY (FK_materia_cod)
-	    REFERENCES materia (cod)
-	    ON DELETE SET NULL ON UPDATE CASCADE;
+		ALTER TABLE ensina ADD CONSTRAINT FK_ensina_0
+		    FOREIGN KEY (FK_professor_cod_professor, FK_professor_FK_pessoa_cpf)
+		    REFERENCES professor (cod_professor, FK_pessoa_cpf)
+		    ON DELETE SET NULL ON UPDATE CASCADE;
+
+		ALTER TABLE ensina ADD CONSTRAINT FK_ensina_1
+		    FOREIGN KEY (FK_materia_cod)
+		    REFERENCES materia (cod)
+		    ON DELETE SET NULL ON UPDATE CASCADE;
+
+		ALTER TABLE frequenta ADD CONSTRAINT FK_frequenta_0
+		    FOREIGN KEY (FK_aluno_matricula, FK_aluno_FK_pessoa_cpf)
+		    REFERENCES aluno (matricula, FK_pessoa_cpf)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+		ALTER TABLE frequenta ADD CONSTRAINT FK_frequenta_1
+		    FOREIGN KEY (FK_materia_cod)
+		    REFERENCES materia (cod)
+		    ON DELETE RESTRICT ON UPDATE RESTRICT;
 	
-	  Insert into complemento(cod_complemento,dec_complemento)
-		values('01','casa'),
-		('02','condominio'),    		
-		('03','apartamento');
- 
-
- 
-	Insert into pais(nome_pais,numero_pais)
-		values('BR',00),
-   			('USA',01),  
-    		('FRA',02),  
-    		('CHI',03),  
-    		('ARG',04);
-		
-	Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
-		values('ES',00,00),
-   			('RJ',01,00),  
-    		('SP',02,00),  
-    		('NY',03,01),  
-    		('RO',04,00);
-	    
-	   Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
-		values('Serra',00,00),
-   			('Vitoria',01,00),  
-    		('Rio de Janeiro',02,01),  
-    		('São Paulo',03,02),  
-    		('Cariacica',04,00),
-			('Vila Velha',05,00);
-			
-	       
-	   Insert into bairro_(nome_bairro,numero_bairro ,fk_cidade_numero_cidade)
-		values('nova almeida',00,00),
-   		('jardim da penha',01,01),  
-    		('laranjeiras',02,00),  
-    		('Cobilândia',03,05),  
-    		('Jardim Camburi',04,01);	
- 
+		Insert into complemento(cod_complemento,dec_complemento)
+			values('01','casa'),
+			('02','condominio'),    		
+			('03','apartamento');
 
 
 
-	   Insert into endereco_(numero,codigo,fk_complemento_cod_complemento,fk_bairro__numero_bairro)
-			values(01,'1111',01,00),
-			(02,'2222',01,01),  
-			(03,'3333',02,02),  
-			(04,'4444',03,03),  
-			(05,'5555',02,04);	
+		Insert into pais(nome_pais,numero_pais)
+			values('BR',00),
+			('USA',01),  
+				('FRA',02),  
+				('CHI',03),  
+				('ARG',04);
+
+		Insert into estado(nome_estado,numero_estado,fk_pais_numero_pais)
+			values('ES',00,00),
+				('RJ',01,00),  
+				('SP',02,00),  
+				('NY',03,01),  
+				('RO',04,00);
+
+		   Insert into cidade(nome_cidade,numero_cidade ,fk_estado_numero_estado)
+			values('Serra',00,00),
+				('Vitoria',01,00),  
+				('Rio de Janeiro',02,01),  
+				('São Paulo',03,02),  
+				('Cariacica',04,00),
+				('Vila Velha',05,00);
 
 
-	 Insert Into Turma( nome_turma, numero_turma)
-		   Values ('A', '00'),
-		   ('B', '01'),
-		   ('C', '02'),
-		   ('D', '03'),
-		   ('X', '04');
-
-	Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo,sexo)
-			Values ('11111111', 'Guilherme Bork','12-12-2002','1111','M'),
-			('2222222222', 'Fabio', '09-09-2002','3333','M'),
-			('3333333333', 'Daniel', '07-08-2001','2222','M'),
-			('4444444444', 'Vanessa', '08-09-2003','3333','F'),
-			('5555555555', 'Kamila', '02-09-2000','4444','F'),
-			('6666666666', 'Paulo', '17-09-1985','5555','M'),
-			('7777777777', 'Jeferson', '20-06-1976','5555','M');
+		   Insert into bairro_(nome_bairro,numero_bairro ,fk_cidade_numero_cidade)
+			values('nova almeida',00,00),
+			('jardim da penha',01,01),  
+				('laranjeiras',02,00),  
+				('Cobilândia',03,05),  
+				('Jardim Camburi',04,01);	
 
 
 
 
-	Insert into logadouro(cod,tipo,nome,fk_endereco__codigo)
-	values(01,'Avenida','belo horizonte','1111'),
-	(02,'Avenida','Dante Michelini','5555'),
-	(03,'Rua' ,'Albérico Bitencourt','4444'),
-	(04,'Rua','Boulevard Antilhas','3333'),
-	(05,'Avenida','Abido Saad','2222');
+		   Insert into endereco_(numero,codigo,fk_complemento_cod_complemento,fk_bairro__numero_bairro)
+				values(01,'1111',01,00),
+				(02,'2222',01,01),  
+				(03,'3333',02,02),  
+				(04,'4444',03,03),  
+				(05,'5555',02,04);	
+
+
+		 Insert Into Turma( nome_turma, numero_turma)
+			   Values ('A', '00'),
+			   ('B', '01'),
+			   ('C', '02'),
+			   ('D', '03'),
+			   ('X', '04');
+
+		Insert Into pessoa (cpf,nome,data_de_nascimento,fk_endereco__codigo,sexo)
+				Values ('11111111', 'Guilherme Bork','12-12-2002','1111','M'),
+				('2222222222', 'Fabio', '09-09-2002','3333','M'),
+				('3333333333', 'Daniel', '07-08-2001','2222','M'),
+				('4444444444', 'Vanessa', '08-09-2003','3333','F'),
+				('5555555555', 'Kamila', '02-09-2000','4444','F'),
+				('6666666666', 'Paulo', '17-09-1985','5555','M'),
+				('7777777777', 'Jeferson', '20-06-1976','5555','M');
 
 
 
-	Insert Into aluno (matricula, fk_pessoa_cpf, fk_turma_numero_turma)
-	Values ('00000', '11111111','00'),
-	('11111', '2222222222', '00'),
-	('22222', '3333333333', '02'),
-	('33333', '4444444444', '03'),
-	('55555', '5555555555', '01');
+		Insert into logadouro(cod,tipo,nome,fk_endereco__codigo)
+		values(01,'Avenida','belo horizonte','1111'),
+		(02,'Avenida','Dante Michelini','5555'),
+		(03,'Rua' ,'Albérico Bitencourt','4444'),
+		(04,'Rua','Boulevard Antilhas','3333'),
+		(05,'Avenida','Abido Saad','2222');
+
+		Insert Into aluno (matricula, fk_pessoa_cpf, fk_turma_numero_turma)
+		Values ('00000', '11111111','00'),
+		('11111', '2222222222', '00'),
+		('22222', '3333333333', '02'),
+		('33333', '4444444444', '03'),
+		('55555', '5555555555', '01');
+
+
+
+		Insert Into professor(cod_professor, fk_pessoa_cpf)
+		Values ('01111', '6666666666'),
+		('02222', '7777777777');
+
+
+
+		Insert Into avaliacao(Nome_avaliacao, data_avaliacao, Valor_avaliacao,numero_avaliacao)
+		Values ('prova1', '12-12-2018', 10,1),
+		('Trab1', '12-12-2018', 25,2),
+		('Prova2', '13-12-2018', 10,3),
+		('Trab2', '13-12-2018', 5,4),
+		('Trab3', '13-12-2018', 10,5);
+
+
+		Insert Into aplica(fk_avaliacao_numero_avaliacao,fk_professor_cod_professor,fk_professor_fk_pessoa_cpf)
+		Values (1,'01111','6666666666'),
+		(2,'01111','6666666666'),
+		(3,'01111','6666666666'),
+		(4,'02222','7777777777'),
+		(5,'02222','7777777777');
 
 
 
 
-	Insert Into professor(cod_professor, fk_pessoa_cpf)
-	Values ('01111', '6666666666'),
-	('02222', '7777777777');
+		Insert into ano(cod,descricao,FK_turma_numero_turma)
+		values(01,'2013','00'),
+		(02,'2014','01'),
+		(03,'2015','02'),
+		(04,'2016','03'),
+		(05,'2017','04');
+
+
+		Insert Into ensina(fk_professor_cod_professor,fk_professor_fk_pessoa_cpf,fk_materia_cod)
+		Values ('01111','6666666666',1),
+		('02222','7777777777',2),
 
 
 
-	Insert Into avaliacao(Nome_avaliacao, data_avaliacao, Valor_avaliacao,numero_avaliacao)
-	Values ('prova1', '12-12-2018', 10,1),
-	('Trab1', '12-12-2018', 25,2),
-	('Prova2', '13-12-2018', 10,3),
-	('Trab2', '13-12-2018', 5,4),
-	('Trab3', '13-12-2018', 10,5);
+		Insert Into materia(cod,descricao)
+		Values (1,'Matematica'),
+		(2,'Historia'),
 
 
-	Insert Into aplica(fk_avaliacao_numero_avaliacao,fk_professor_cod_professor,fk_professor_fk_pessoa_cpf)
-	Values (1,'01111','6666666666'),
-	(2,'01111','6666666666'),
-	(3,'01111','6666666666'),
-	(4,'02222','7777777777'),
-	(5,'02222','7777777777');
+		Insert into leciona(fk_turma_numero_turma,fk_professor_cod_professor ,fk_professor_fk_pessoa_cpf)
+			values('00','01111','6666666666'),
+				('01','01111','6666666666'),  
+				('02','01111','6666666666'),  
+				('03','02222','7777777777'),  
+				('04','02222','7777777777');	
+
+		Insert into faz(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
+			values('00000','11111111','1','7'),
+				('11111','2222222222','1','8'),  
+				('22222','3333333333','1','10'),  
+				('33333','4444444444','1','5.5'),  
+				('55555','5555555555','1','6.5');	
 
 
+		insert into frequenta(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf,fk_materia_cod,data,presenca)
+		values('00000','11111111',1,'03-03-2017','.'),
+		('11111','2222222222',1,'03-03-2017','.'),
+		('22222','3333333333',1,'03-03-2017','.'),
+		('33333','4444444444',1,'03-03-2017','.'),
+		('55555','5555555555',1,'03-03-2017','F');
 
-
-	Insert into ano(cod,descricao,FK_turma_numero_turma)
-	values(01,'2013','00'),
-	(02,'2014','01'),
-	(03,'2015','02'),
-	(04,'2016','03'),
-	(05,'2017','04');
-
-
-	Insert Into ensina(fk_professor_cod_professor,fk_professor_fk_pessoa_cpf,fk_materia_cod)
-	Values ('01111','6666666666',1),
-	('01111','6666666666',2),
-	('01111','6666666666',3),
-	('02222','7777777777',4),
-	('02222','7777777777',5);
-
-
-	Insert Into materia(cod,descricao)
-	Values (1,'Matematica'),
-	(2,'Fisica'),
-	(3,'Cálculo'),
-	(4,'História'),
-	(5,'Filosofia');
-
-
-	Insert into leciona(fk_turma_numero_turma,fk_professor_cod_professor ,fk_professor_fk_pessoa_cpf)
-		values('00','01111','6666666666'),
-   		('01','01111','6666666666'),  
-    		('02','01111','6666666666'),  
-    		('03','02222','7777777777'),  
-    		('04','02222','7777777777');	
- 	
-		
-	Insert into faz(fk_aluno_matricula,fk_aluno_fk_pessoa_cpf ,fk_avaliacao_numero_avaliacao,nota)
-		values('00000','11111111','1','7'),
-   		('11111','2222222222','1','8'),  
-    		('22222','3333333333','1','10'),  
-    		('33333','4444444444','1','5.5'),  
-    		('44444','5555555555','1','6.5');	
 
 
 		
