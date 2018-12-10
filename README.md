@@ -1315,49 +1315,53 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/2015.png?raw=true)	    
 	    
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
-        Select * from Aluno
-       	Where dat_nasc > '12-12-2000' and dat_nasc < '12-12-2003'
+     
+     	Select * from Aluno  where matricula='00000' or matricula ='33333' or matricula = '55555'
 	
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/931.png)
-
-        Select * from Avaliacoes
-        Where Valor_avalicao = 10 or Valor_avalicao = 5
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select1.png?raw=true)
 	
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/932.png)	
-
-        Select * from Professor
-        Where Nome_Prof = 'Pedro' or Nome_prof = 'Thais'
+	Select * from Professor Where cod_professor='02222'
 	
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/933.png)	
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select2.png?raw=true)	
 
-        Select * from Turma
-        Where Nome_turma != 'A'
+       Select * from Turma Where Nome_turma != 'A'
 	
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/934.png)
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select3.png?raw=true)	
 
-        Select * from Avaliacoes
-        Where Valor_avalicao = 10 and 
-        Dat_avalicao > '12-03-2017'
-
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/935.png)
-
-        Select * from Avaliacoes
-        Where Valor_avalicao > 10
-   
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/936.png)
-   
-        Select Nome_aluno as batutinhas from Aluno
+       Select * from avaliacao Where Valor_avaliacao = 10 or Valor_avaliacao = 5
 	
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/937.png)	
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select4.png?raw=true)
+ 
+ 	Select * from Professor Where cod_professor='01111'
+
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select5.png?raw=true)
+		
+		Select * from Avaliacao
+		Where Valor_avaliacao = 10 and 
+		Data_avaliacao > '12-03-2017'
+
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select6.png?raw=true)
+   		 	
+			Select * from avaliacao
+        		Where Valor_avaliacao > 10
+	
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select7.png?raw=true)	
         
-	Select Matrícula as Código_de_Barra from Aluno 
+	 Select nome as humanos from pessoa
 	
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/938.png)        
-	
-	Select dat_avalicao as data_avaliacao from avaliacoes
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select8.png?raw=true)        
 
-![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/939.png)
-    
+  	 Select matricula as Código_de_Barra from Aluno 
+
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select9.png?raw=true)
+	
+	Select data_avaliacao as data_de_avaliacoes from avaliacao
+   
+ ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select10.png?raw=true)
+ 	
+	 select * from estado where fk_pais_numero_pais='0'
+   
+ ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/select11.png?raw=true)
     
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
