@@ -1196,19 +1196,46 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 #### 9.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
             Select * from Aluno
             
-   ![Alt text](https://raw.githubusercontent.com/ReconhecimentoFacial/trabalho01/master/imagens/turma.png )
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20aluno.png?raw=true)
             
-            Select * from Avaliacoes
+	    Select * from ano 
+	    
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20ano.png?raw=true)
+	    
+            Select * from aplica
             
-   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/avalia%C3%A7%C3%B5es.png?raw=true)
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20aplica.png?raw=true)
             
-            Select * from Professor
+            Select * from avaliacao
    
-   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/professor.png?raw=true)
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20avaliacao.png?raw=true)
             
-            Select * from Turma
+            Select * from bairro_
             
-   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/turma.png?raw=true)
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20bairro_.png?raw=true)
+   
+  
+   	Select * from complemento
+            
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20complemento.png?raw=true)
+           
+	   Select * from endereco_
+            
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20endereco_.png?raw=true)
+           
+	   Select * from ensina
+            
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20ensina.png?raw=true)
+           
+	   Select * from estado
+            
+   ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20estado.png?raw=true)
+           
+	   Select * from cidade
+            
+   ![Alt text]( https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/tabela%20cidade.png?raw=true)
+           
+	   
            
    
 
