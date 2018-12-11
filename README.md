@@ -1475,6 +1475,45 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 <br>
 
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
+					   
+			select ava.nome_avaliacao,
+                               t.nome_turma,
+                               avg(f.nota)
+                               from faz f inner join avaliacao ava
+                               on (ava.numero_avaliacao = f.fk_avaliacao_numero_avaliacao)
+                               inner join aluno a 
+                               on (f.fk_aluno_matricula = a.matricula)
+                               inner join turma t
+                               on (a.fk_turma_numero_turma = t.numero_turma)
+                               group by t.nome_turma,ava.nome_avaliacao
+                               order by avg(f.nota) desc
+
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin3.png?raw=true)
+
+				select t.nome_turma,
+				sum((case when p.sexo='M' then 1 else 0 end)) as masculino,
+				sum((case when p.sexo='F' then 1 else 0 end)) as feminino
+				from pessoa p 
+				inner join aluno a 
+				on (p.cpf = a.fk_pessoa_cpf) inner join turma t
+				on (a.fk_turma_numero_turma = t.numero_turma)
+				group by t.nome_turma 
+				order by t.nome_turma
+							
+				
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin4.png?raw=true)
+
+	
+	select  p.nome,
+                    m.descricao as materia,
+                    sum((case when f.presenca='.' then 1 else 0 end)) as dias_presentes
+                    from pessoa p inner join frequenta f
+                    on(p.cpf = f.fk_aluno_fk_pessoa_cpf) inner join materia m 
+                    on(m.cod = f.fk_materia_cod)
+                    group by p.nome,m.descricao
+
+![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin6.png?raw=true)
+
 
 #### 9.8	CONSULTAS COM LEFT E RIGHT JOIN (Mínimo 4)<br>
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
