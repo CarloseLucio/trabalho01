@@ -21,8 +21,8 @@ Descrição textual das regras de negócio definidas como um  subconjunto do mun
 cujos elementos são propriedades que desejamos incluir, processar, armazenar, 
 gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
-> O Sistema proposto para a "Relevabor Company" conterá as informações aqui detalhados. O sistema será formado pelo site e pelo sensor da porta que será conectado com o sistema. Cada professor irá ter seu cadastro online com seu email,nome,matrícula e uma senha, o educador possuirá algumas opções sobre o que visualizar ou o que criar.No nosso primeira sistema cada professor só poderá possuir uma única materia mas isso é algo que pretendemos mudar em uma nova versão.O professor poderá acessar a opção criar, onde ele poderá cadastrar um aluno, uma turma,uma atividade ou uma nota. Para cadastrar um estudante ele colocará o nome a matrícula, o email, o sexo, o cpf, a data de nascimento e uma foto para o sensor fazer o reconhecimento. Para cadastrar uma turma precisará de colocar o nome, o ano que foi criada essa turma, o turno e adicionar os alunos através do nomes ou matrícula. Para criar uma atividade ele precisará colocar o nome da atividade, o tipo caso for uma prova ou só uma atividade, a data que ela ocorrerá, o horario, a turma e quantos pontos valerá. Para adicionar notas o usuário colocará a turma, selecionará qual foi a atividade criada, digitara o nome do aluno e escreverá a nota. 
-    No sistema proposto o Professor também poderá visualizar certas coisas como o historico presencial dos alunos que será feito diretamente pelo sensor, o usuário só precisará colocar a data,turma e a aula, que irá mostrar todos os alunos e se eles chegaram atrasados ou faltaram.Também será possivel ver um resumo de cada aluno na opção alunos da pagina inicial, nessa opção o usuário colocará o nome do aluno e será possivel ver a foto do estudante junto com o número total de faltas e presenças em todas materias e também a turma a qual ele pertence. Outra opção que o educador terá é o boletim onde ele só selecionará a turma e a matéria e será possivel ver a nota de todos os alunos em ordem alfabética. E a ultima opção será o calendario de atividades onde o professor poderá ver pela data o que já está marcado para uma determinada turma e assim não correr o risco de marcar outra coisa no mesmo horario ou dia.Também será armazenado o endereço de todas as pessoas que fazem parte do endereço com o pais,estado,cidade e bairro.
+> O Sistema proposto para a "Relevabor Company" conterá as informações aqui detalhados. O sistema será formado pelo site e pelo sensor da porta que será conectado com o sistema. Cada professor irá ter seu cadastro online com seu email,nome,matrícula e uma senha, o educador possuirá algumas opções sobre o que visualizar ou o que criar.No nosso primeira sistema cada professor só poderá possuir uma única materia mas isso é algo que pretendemos mudar em uma nova versão.O professor poderá acessar a opção criar, onde ele poderá cadastrar um aluno, uma turma,uma atividade ou uma nota. Para cadastrar um estudante ele colocará o nome a matrícula, o email, o sexo, o cpf, a data de nascimento e uma foto para o sensor fazer o reconhecimento. Para cadastrar uma turma precisará de colocar o nome, o ano que foi criada essa turma e adicionar os alunos através do nomes ou matrícula. Para criar uma atividade ele precisará colocar o nome da atividade, a data que ela ocorrerá, a turma e quantos pontos valerá. Para adicionar notas o usuário colocará a turma, selecionará qual foi a atividade criada, digitara o nome do aluno e escreverá a nota. 
+    No sistema proposto o Professor também poderá visualizar certas coisas como o historico presencial dos alunos que será feito diretamente pelo sensor, o usuário só precisará colocar a data,turma e a aula, que irá mostrar todos os alunos e se eles chegaram atrasados ou faltaram.Também será possivel ver um resumo de cada aluno na opção alunos da pagina inicial, nessa opção o usuário colocará o nome do aluno e será possivel ver a foto do estudante junto com o número total de faltas e presenças em todas materias e também a turma a qual ele pertence. Outra opção que o educador terá é o boletim onde ele só selecionará a turma e a matéria e será possivel ver a nota de todos os alunos em ordem alfabética. E a ultima opção será o calendario de atividades onde o professor poderá ver pela data o que já está marcado para uma determinada turma e assim não correr o risco de marcar outra coisa no mesmo horario ou dia.Também será armazenado o endereço de todas as pessoas que fazem parte do endereço com o pais, estado, cidade e bairro.
 
 ### 4.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
 
@@ -66,44 +66,110 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 #### 5.3 DESCRIÇÃO DOS DADOS 
     Aluno : Tabela que recebe os atributos dos alunos
    
-    	Matricula : Colocamos o campo matricula pelo fato de cada participante (professores e alunos) possuir uma matricula 
-                      diferente de qualquer outra pessoa do sistema,sendo assim,é muito bom para usar de chave primária. 
-                      
-    	Nome_aluno : Esse atributo é utilizado para a identificação do aluno para amostra de notas ou da pagina que mostra
-                        todos os dados dos alunos,pois para o usuário é mais válido lembrar o nome do que lembra a matricúla. 
-          
-    	dat_nasc : Outro dado utilizado para a identificação do aluno. 
+    	matricula : Colocamos o campo matricula para identificarmos nossos alunos
+         
     
     Turma : tabela que receberá os atributos da turma
     
-    	Num_Turma : o número da turma é de grande utilidade,pois é quue certamente será diferente de turma para turma,
+    	numero_Turma : o número da turma é de grande utilidade,pois é quue certamente será diferente de turma para turma,
                         sendo assim, muito utíl para ser a chave primária da objeto turma.
                         
-    	Nome_turma : O nome da turma é a principal forma para o usuário poder a identificar, é util para o usuário ver o que                              cada turma possui de atividade,ou marcar uma,entre outras coisas.   
+    	nome_turma : O nome da turma é a principal forma para o usuário poder a identificar, é util para o usuário ver o que                              cada turma possui de atividade,ou marcar uma,entre outras coisas.   
           
-    	Data_Criacao : É o ano ínicial da turma e é um outro atributo utilizado para especificar a turma. 
         
     Professor : Tabela que recebe os atributos dos professores 
    	
-		Matricula : Colocamos o campo matricula pelo fato de cada participante (professores e alunos) possuir uma matricula 
-                      diferente de qualquer outra pessoa do sistema,sendo assim,é muito bom para usar de chave primária. 
+	cod_professor :  Colocamos o campo matricula para identificarmos nossos professores 
 		      
-    	Nome_prof : atributo para identificação do professor,é recebido no proprio cadastro. 
-          
-    	Cpf_prof : outro dado para especificação do professor
-          
-     Avaliacao : Tabela que recebe os atributos daas avaliações 
+    
+    Avaliacao : Tabela que recebe os atributos daas avaliações 
      
-    	Num_avalicao :  Identificador e chave primaria da avaliação.
+    	numero_avalicao :  Identificador e chave primaria da avaliação.
           
-    	Nome_avalicao : Especificação se é uma prova ou uma atividade. 
+    	nome_avalicao : O nome da avaliação é muito importante para o usuario identificar as avaliações
           
-    	Dat_Avalicao : Data que acontecerá a atividade. 
+    	data_Avalicao : Data que acontecerá a atividade. 
           
-    	Valor_avalicao : valor da avaliação. 
-          
-    	nota : nota que o aluno recebeu na avaliação. 
-
+    	valor_avalicao : valor da avaliação. 
+     
+     Endereço : Tabela que recebe os atributos dos endereços
+     
+     	numero : identificador para o banco de dados ter controle da quantidade
+	
+	codigo : identificador e chave primaria de endereço utilizada por pessoa 
+     
+     Bairro : Tabela que receve os atributos dos bairros
+     
+     	nome_bairro :  O nome do bairro é muito importante para o usuario identificar os bairros
+	
+	numero_bairro :  Identificador e chave primaria do bairro.
+	
+     Cidade : Tabela que recebe os atributos das cidades
+     
+        nome_cidade : O nome da cidade é muito importante para o usuario identificar as cidades
+	
+	numero_cidade : Identificador e chave primaria de cidade.
+	
+     País : Tabela que recebe os atributos dos países
+       
+        nome_pais :  O nome do país é muito importante para o usuario identificar os países
+	
+	numero_pais :  Identificador e chave primaria de pais.
+	
+     Estados : Tabela que recebe os atributos dos estados 
+        
+	nome_estado : O nome do estado é muito importante para o usuario identificar os estados
+	
+	numero_estado : Identificador e chave primaria de estado
+	
+     Complemento : Tabela que recebe os atributos dos complementos 
+      
+        cod_complemento : Identificador e chave primaria do complemento 
+	
+	dec_complemento : A descrição é muito importante para o usuario identificar os complemento
+ 
+     Logradouro : Tabela que recebe os atributos dos Logradouros
+     
+     	cod : Identificador e chave primaria do complemento
+	
+	tipo : Importante para saber se é uma rua, avenida ou algo afim
+	
+	nome : O nome do logradouro é muito importante para o usuario identificar os logradouros
+	
+    Ano : Tabela que recebe os atributos dos anos
+    
+    	cod : Identificador e chave primaria do ano
+	
+	descricao : A descrição é muito importante para o usuario identificar os anos
+	
+    Pessoa : Tabela que recebe os atributos das pessoas
+    
+         nome : O nome da pessoa é muito importante para o usuario identificar as pessoas
+    
+         cpf : Identificador e chave primaria de pessoa
+    
+         data_de_nascimento : É importante para o banco ter controle da idade das pessoas
+     
+         sexo : É importante para o banco ter controle do sexo das pessoas
+	 
+    Materia : Tabela que recebe os atributos das materias
+    
+         cod : Identificador e chave primaria de materia
+	 
+	 descricao :  A descrição é muito importante para o usuario identificar as materias
+	 
+    Faz : Tabela que recebe os dados dos alunos que fazem uma avaliação
+         
+	 nota : É importante para vizualizar e utilizar a nota do aluno na avaliação
+	 
+    Frequenta : Tabela que recebe os dados da frequencia 
+    
+         data : Importante para controlar as faltas do aluno
+	 
+	 presenca : Importante para controlar o numero de faltas dos alunos
+     
+	
+	
 >## Marco de Entrega 01 em: (12/05/2018)<br>
 ### 6	MODELO LÓGICO<br>
 
@@ -1390,10 +1456,7 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
  ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/update3.png?raw=true)
 	
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
-       		    
- 1-  alunos que  tiveram nota superior a media em determinada avaliação
-   
-		    select p.nome,
+       		     select p.nome,
                             a.nome_avaliacao,
                             a.valor_avaliacao,
                             f.nota,
@@ -1410,77 +1473,8 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 			    order by nota desc
 	
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/group1.png?raw=true)
-      
- 2- As 3 maiores notas de determinada avaliação 
-      
-			  select f.fk_aluno_matricula,
-                               f.nota,
-                               p.nome,
-                               a.nome_avaliacao
-                               from faz f
-                               inner join avaliacao a
-                               on (f.fk_avaliacao_numero_avaliacao = a.numero_avaliacao)
-                               inner join pessoa p
-                               on (p.cpf = f.fk_aluno_fk_pessoa_cpf)
-                               order by f.nota desc
-                               limit 3
+        
 
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innejoin2.png?raw=true)
-
-3- Média por turma em determinada avaliação 
-  
-			select ava.nome_avaliacao,
-                               t.nome_turma,
-                               avg(f.nota)
-                               from faz f inner join avaliacao ava
-                               on (ava.numero_avaliacao = f.fk_avaliacao_numero_avaliacao)
-                               inner join aluno a 
-                               on (f.fk_aluno_matricula = a.matricula)
-                               inner join turma t
-                               on (a.fk_turma_numero_turma = t.numero_turma)
-                               group by t.nome_turma,ava.nome_avaliacao
-                               order by avg(f.nota) desc
-
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin3.png?raw=true)
-
-4-Quantidade de alunos por gênero 
-
-				select t.nome_turma,
-				sum((case when p.sexo='M' then 1 else 0 end)) as masculino,
-				sum((case when p.sexo='F' then 1 else 0 end)) as feminino
-				from pessoa p 
-				inner join aluno a 
-				on (p.cpf = a.fk_pessoa_cpf) inner join turma t
-				on (a.fk_turma_numero_turma = t.numero_turma)
-				group by t.nome_turma 
-				order by t.nome_turma
-							
-				
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin4.png?raw=true)
-
-5 - Quantos turmas vieram depois de um determinado ano
-
-			select nome_turma,
-                            a.descricao as ano_de_criação
-                            from turma t
-                            inner join ano a
-                            on (t.numero_turma = a.Fk_turma_numero_turma)
-                            where a.descricao >'2014'
-								
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin5.png?raw=true)	
-
-6 - Historico presencial 
-
-	select  p.nome,
-                    m.descricao as materia,
-                    sum((case when f.presenca='.' then 1 else 0 end)) as dias_presentes
-                    from pessoa p inner join frequenta f
-                    on(p.cpf = f.fk_aluno_fk_pessoa_cpf) inner join materia m 
-                    on(m.cod = f.fk_materia_cod)
-                    group by p.nome,m.descricao
-
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin6.png?raw=true)
-	
 ## Marco de Entrega 02 em: (16/06/2018)<br>
 ### ATUALIZAÇÃO DA DOCUMENTAÇÃO DOS SLIDES PARA APRESENTAÇAO SEMESTRAL (Mínimo 6 e Máximo 10)<br>
 <br>
@@ -1488,49 +1482,6 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 <br>
 
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
-	
-	1- Média por turma em determinada avaliação 
-  
-			select ava.nome_avaliacao,
-                               t.nome_turma,
-                               avg(f.nota)
-                               from faz f inner join avaliacao ava
-                               on (ava.numero_avaliacao = f.fk_avaliacao_numero_avaliacao)
-                               inner join aluno a 
-                               on (f.fk_aluno_matricula = a.matricula)
-                               inner join turma t
-                               on (a.fk_turma_numero_turma = t.numero_turma)
-                               group by t.nome_turma,ava.nome_avaliacao
-                               order by avg(f.nota) desc
-
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin3.png?raw=true)
-
-2-Quantidade de alunos por gênero 
-
-				select t.nome_turma,
-				sum((case when p.sexo='M' then 1 else 0 end)) as masculino,
-				sum((case when p.sexo='F' then 1 else 0 end)) as feminino
-				from pessoa p 
-				inner join aluno a 
-				on (p.cpf = a.fk_pessoa_cpf) inner join turma t
-				on (a.fk_turma_numero_turma = t.numero_turma)
-				group by t.nome_turma 
-				order by t.nome_turma
-				
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin4.png?raw=true)
-
-3 - Historico presencial 
-
-	select  p.nome,
-                    m.descricao as materia,
-                    sum((case when f.presenca='.' then 1 else 0 end)) as dias_presentes
-                    from pessoa p inner join frequenta f
-                    on(p.cpf = f.fk_aluno_fk_pessoa_cpf) inner join materia m 
-                    on(m.cod = f.fk_materia_cod)
-                    group by p.nome,m.descricao
-
-![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin6.png?raw=true)
-
 
 #### 9.8	CONSULTAS COM LEFT E RIGHT JOIN (Mínimo 4)<br>
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
