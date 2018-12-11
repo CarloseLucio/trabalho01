@@ -1390,7 +1390,10 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
  ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/update3.png?raw=true)
 	
 #### 9.6	CONSULTAS COM JUNÇÃO E ORDENAÇÃO (Mínimo 6)<br>
-       		     select p.nome,
+       		    
+ 1-  alunos que  tiveram nota superior a media em determinada avaliação
+   
+		    select p.nome,
                             a.nome_avaliacao,
                             a.valor_avaliacao,
                             f.nota,
@@ -1407,7 +1410,9 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 			    order by nota desc
 	
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/group1.png?raw=true)
-        
+      
+ 2- As 3 maiores notas de determinada avaliação 
+      
 			  select f.fk_aluno_matricula,
                                f.nota,
                                p.nome,
@@ -1421,7 +1426,9 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
                                limit 3
 
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innejoin2.png?raw=true)
-		       
+
+3- Média por turma em determinada avaliação 
+  
 			select ava.nome_avaliacao,
                                t.nome_turma,
                                avg(f.nota)
@@ -1435,7 +1442,9 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
                                order by avg(f.nota) desc
 
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin3.png?raw=true)
-				
+
+4-Quantidade de alunos por gênero 
+
 				select t.nome_turma,
 				sum((case when p.sexo='M' then 1 else 0 end)) as masculino,
 				sum((case when p.sexo='F' then 1 else 0 end)) as feminino
@@ -1449,6 +1458,8 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 				
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin4.png?raw=true)
 
+5 - Quantos turmas vieram depois de um determinado ano
+
 			select nome_turma,
                             a.descricao as ano_de_criação
                             from turma t
@@ -1457,6 +1468,8 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
                             where a.descricao >'2014'
 								
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin5.png?raw=true)	
+
+6 - Historico presencial 
 
 	select  p.nome,
                     m.descricao as materia,
@@ -1475,7 +1488,9 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 <br>
 
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
-					   
+	
+	1- Média por turma em determinada avaliação 
+  
 			select ava.nome_avaliacao,
                                t.nome_turma,
                                avg(f.nota)
@@ -1490,6 +1505,8 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin3.png?raw=true)
 
+2-Quantidade de alunos por gênero 
+
 				select t.nome_turma,
 				sum((case when p.sexo='M' then 1 else 0 end)) as masculino,
 				sum((case when p.sexo='F' then 1 else 0 end)) as feminino
@@ -1499,11 +1516,11 @@ gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
 				on (a.fk_turma_numero_turma = t.numero_turma)
 				group by t.nome_turma 
 				order by t.nome_turma
-							
 				
 ![Alt text](https://github.com/ReconhecimentoFacial/trabalho01/blob/master/imagens/innerjoin4.png?raw=true)
 
-	
+3 - Historico presencial 
+
 	select  p.nome,
                     m.descricao as materia,
                     sum((case when f.presenca='.' then 1 else 0 end)) as dias_presentes
